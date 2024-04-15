@@ -22,6 +22,11 @@ public class WoodenFurnaceBlockEntity extends AbstractFurnaceBlockEntity {
     }
 
     @Override
+    protected int getFuelTime(ItemStack fuel) {
+        return super.getFuelTime(fuel) / 2;
+    }
+
+    @Override
     protected ScreenHandler createScreenHandler(int syncId, PlayerInventory playerInventory) {
         return new FurnaceScreenHandler(syncId, playerInventory, this, this.propertyDelegate);
     }
