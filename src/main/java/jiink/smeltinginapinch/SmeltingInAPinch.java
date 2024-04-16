@@ -2,6 +2,7 @@ package jiink.smeltinginapinch;
 
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
+import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.minecraft.block.Block;
 import net.minecraft.block.entity.BlockEntityType;
@@ -22,6 +23,22 @@ public class SmeltingInAPinch implements ModInitializer {
 	// This logger is used to write text to the console and the log file.
 	// It is considered best practice to use your mod id as the logger's name.
 	public static final Logger LOGGER = LoggerFactory.getLogger("modid");
+
+	public static final Block DEMO_BLOCK = Registry.register(
+		Registries.BLOCK,
+		new Identifier("smeltinginapinch", "demo_block"),
+		new DemoBlock(FabricBlockSettings.create().strength(1.0f))
+	);
+	public static final Item DEMO_BLOCK_ITEM = Registry.register(
+		Registries.ITEM,
+		new Identifier("smeltinginapinch", "demo_block"),
+		new BlockItem(DEMO_BLOCK, new Item.Settings())
+	);
+	public static final BlockEntityType<DemoBlockEntity> DEMO_BLOCK_ENTITY = Registry.register(
+		Registries.BLOCK_ENTITY_TYPE, 
+		new Identifier("smeltinginapinch", "demo_block_entity"),
+		FabricBlockEntityTypeBuilder.create(DemoBlockEntity::new, DEMO_BLOCK).build()
+	);
 
 	public static final WoodenFurnaceBlock WOODEN_FURNACE_BLOCK = Registry.register(
 		Registries.BLOCK,
@@ -47,6 +64,7 @@ public class SmeltingInAPinch implements ModInitializer {
 		LOGGER.info("Hello Fabric world!");
 		ItemGroupEvents.modifyEntriesEvent(ItemGroups.FUNCTIONAL).register(content -> {
 			content.addAfter(Items.BLAST_FURNACE, WOODEN_FURANCE_BLOCK_ITEM);
+			content.addAfter(Items.TORCH, DEMO_BLOCK_ITEM);
 		});
 	}
 }
