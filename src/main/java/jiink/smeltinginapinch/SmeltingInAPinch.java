@@ -1,4 +1,4 @@
-package com.example;
+package jiink.smeltinginapinch;
 
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.block.Block;
@@ -13,7 +13,7 @@ import net.minecraft.util.Identifier;
 
 
 
-public class ExampleMod implements ModInitializer {
+public class SmeltingInAPinch implements ModInitializer {
 	// This logger is used to write text to the console and the log file.
 	// It is considered best practice to use your mod id as the logger's name.
 	public static final Logger LOGGER = LoggerFactory.getLogger("modid");
@@ -27,7 +27,7 @@ public class ExampleMod implements ModInitializer {
 		// Proceed with mild caution.
 
 		LOGGER.info("Hello Fabric world!");
-		Registry.register(Registries.BLOCK, new Identifier("smelting-in-a-pinch", "wooden_furnace"), WOODEN_FURNACE);
-		Registry.register(Registries.ITEM, new Identifier("smelting-in-a-pinch", "wooden_furnace"), new BlockItem(WOODEN_FURNACE, new Item.Settings()));
+		Registry.register(Registries.BLOCK, new Identifier("smeltinginapinch", "wooden_furnace"), WOODEN_FURNACE);
+		Registry.register(Registries.ITEM, new Identifier("smeltinginapinch", "wooden_furnace"), new BlockItem(WOODEN_FURNACE, new Item.Settings()));
 	}
 }

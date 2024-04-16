@@ -1,7 +1,8 @@
-package com.example;
+package jiink.smeltinginapinch;
 
 import net.minecraft.block.AbstractFurnaceBlock;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.entity.AbstractFurnaceBlockEntity;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityTicker;
 import net.minecraft.block.entity.BlockEntityType;
@@ -44,11 +45,10 @@ public class WoodenFurnaceBlock extends AbstractFurnaceBlock {
         }
     }
 
-    @Override
-    @Nullable
-    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
-        
-    }
+    // @Override
+    // public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
+    //     return checkType(type, BlockEntityType.FURNACE, WoodenFurnaceBlockEntity::tick);
+    // }
 
     @Override
     public void randomDisplayTick(BlockState state, World world, BlockPos pos, Random random) {

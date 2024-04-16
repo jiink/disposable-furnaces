@@ -1,6 +1,6 @@
 {
 	"schemaVersion": 1,
-	"id": "modid",
+	"id": "smeltinginapinch",
 	"version": "${version}",
 	"name": "Example mod",
 	"description": "This is an example description! Tell everyone what your mod is about!",
@@ -12,20 +12,20 @@
 		"sources": "https://github.com/FabricMC/fabric-example-mod"
 	},
 	"license": "CC0-1.0",
-	"icon": "assets/modid/icon.png",
+	"icon": "assets/smeltinginapinch/icon.png",
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"com.example.ExampleMod"
+			"jiink.smeltinginapinch.SmeltingInAPinch"
 		],
 		"client": [
-			"com.example.ExampleModClient"
+			"jiink.smeltinginapinch.SmeltingInAPinchClient"
 		]
 	},
 	"mixins": [
-		"modid.mixins.json",
+		"smeltinginapinch.mixins.json",
 		{
-			"config": "modid.client.mixins.json",
+			"config": "smeltinginapinch.client.mixins.json",
 			"environment": "client"
 		}
 	],

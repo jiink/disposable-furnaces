@@ -6,7 +6,7 @@
         "entries": [
           {
             "type": "minecraft:item",
-            "name": "smelting-in-a-pinch:wooden_furnace"
+            "name": "smeltinginapinch:wooden_furnace"
           }
         ],
         "conditions": [
