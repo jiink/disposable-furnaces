@@ -45,10 +45,14 @@ public class WoodenFurnaceBlock extends AbstractFurnaceBlock {
         }
     }
 
-    // @Override
-    // public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
-    //     return checkType(type, BlockEntityType.FURNACE, WoodenFurnaceBlockEntity::tick);
-    // }
+    @Override
+    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
+        return checkType(type, SmeltingInAPinch.WOODEN_FURNACE_BLOCK_ENTITY, (world1, pos, state1, be) -> WoodenFurnaceBlockEntity.tick(world1, pos, state1, be));
+    }
+
+    public static <T extends BlockEntity> BlockEntityTicker<T> checkType(BlockEntityType<T> givenType, BlockEntityType<WoodenFurnaceBlockEntity> expectedType, BlockEntityTicker<? super WoodenFurnaceBlockEntity> ticker) {
+        return givenType == expectedType ? (BlockEntityTicker<T>) ticker : null;
+    }
 
     @Override
     public void randomDisplayTick(BlockState state, World world, BlockPos pos, Random random) {
