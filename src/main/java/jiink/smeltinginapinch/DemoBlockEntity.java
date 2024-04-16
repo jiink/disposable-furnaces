@@ -31,7 +31,7 @@ public class DemoBlockEntity extends BlockEntity {
 
     public static void tick(World world, BlockPos pos, BlockState state, DemoBlockEntity be) {
         if (!world.isClient) {
-            SmeltingInAPinch.LOGGER.info("Tick! " + be.number);
+            //SmeltingInAPinch.LOGGER.info("Tick! " + be.number);
 
         }
     }
