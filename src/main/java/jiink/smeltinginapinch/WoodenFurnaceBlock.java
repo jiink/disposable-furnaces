@@ -39,7 +39,7 @@ public class WoodenFurnaceBlock extends BlockWithEntity {
 
     @Nullable
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
-        return validateTicker(type, SmeltingInAPinch.WOODEN_FURNACE_BLOCK_ENTITY, (world1, pos, state1, be) -> WoodenFurnaceBlockEntity.tick(world1, pos, state1));
+        return validateTicker(type, SmeltingInAPinch.WOODEN_FURNACE_BLOCK_ENTITY, (world1, pos, state1, be) -> ((WoodenFurnaceBlockEntity) be).tick(world1, pos, state1));
     }
 
     @Override
