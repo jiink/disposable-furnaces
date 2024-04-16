@@ -4,10 +4,11 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 
 public class DemoBlockEntity extends BlockEntity {
     
-    public int number = 7;
+    public int number = 0;
     private static final String NBT_ATTACHMENT_KEY = "number";
     
     public DemoBlockEntity(BlockPos pos, BlockState state) {
@@ -26,5 +27,12 @@ public class DemoBlockEntity extends BlockEntity {
     public void readNbt(NbtCompound nbt) {
         super.readNbt(nbt);
         number = nbt.getInt(NBT_ATTACHMENT_KEY);
+    }
+
+    public static void tick(World world, BlockPos pos, BlockState state, DemoBlockEntity be) {
+        if (!world.isClient) {
+            SmeltingInAPinch.LOGGER.info("Tick! " + be.number);
+
+        }
     }
 }
