@@ -4,6 +4,8 @@ import java.util.Optional;
 
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.HorizontalFacingBlock;
+import net.minecraft.block.RedstoneTorchBlock;
 import net.minecraft.block.entity.AbstractFurnaceBlockEntity;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityType;
@@ -24,6 +26,9 @@ import net.minecraft.screen.FurnaceScreenHandler;
 import net.minecraft.screen.PropertyDelegate;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.state.property.BooleanProperty;
+import net.minecraft.state.property.DirectionProperty;
+import net.minecraft.state.property.Properties;
 import net.minecraft.text.Text;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
@@ -115,6 +120,9 @@ public class WoodenFurnaceBlockEntity extends BlockEntity implements ExtendedScr
         }
         if (fuelStarted == 1) {
             fuelRemaining--;
+            if (!world.getBlockState(pos).get(Properties.LIT)) {
+                world.setBlockState(pos, state.with(Properties.LIT, true));
+            }
         }
         if (fuelRemaining <= 0) {
             // explode
