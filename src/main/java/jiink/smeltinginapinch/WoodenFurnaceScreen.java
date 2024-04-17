@@ -43,7 +43,8 @@ public class WoodenFurnaceScreen extends HandledScreen<WoodenFurnaceScreenHandle
     }
 
     private void renderFlame(DrawContext context, int x, int y) {
-        context.drawTexture(TEXTURE, x + 56, y + 54, 200, 20, 14, handler.getScaledFuel());
+        int flameHeight = handler.getScaledFuel();
+        context.drawTexture(TEXTURE, x + 56, y + 54 + (14 - flameHeight), 200, 20 + (14 - flameHeight), 14, flameHeight);
     }
 
     @Override
