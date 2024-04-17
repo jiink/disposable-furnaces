@@ -65,9 +65,10 @@ public class WoodenFurnaceBlock extends BlockWithEntity {
             NamedScreenHandlerFactory screenHandlerFactory = (WoodenFurnaceBlockEntity)world.getBlockEntity(pos);
             if (screenHandlerFactory != null) {
                 player.openHandledScreen(screenHandlerFactory);
+                return ActionResult.SUCCESS;
             }
         }
-        return ActionResult.PASS;
+        return ActionResult.SUCCESS;
     }
 
     @Environment(EnvType.CLIENT)
