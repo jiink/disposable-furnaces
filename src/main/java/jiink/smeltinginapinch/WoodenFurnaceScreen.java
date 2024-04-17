@@ -33,12 +33,17 @@ public class WoodenFurnaceScreen extends HandledScreen<WoodenFurnaceScreenHandle
         int y = (height - backgroundHeight) / 2;
         context.drawTexture(TEXTURE, x, y, 0, 0, backgroundWidth, backgroundHeight);
         renderProgressArrow(context, x, y);
+        renderFlame(context, x, y);
     }
 
     private void renderProgressArrow(DrawContext context, int x, int y) {
         if (handler.isCrafting()) {
-            context.drawTexture(TEXTURE, x + 85, y + 30, 176, 0, 8, handler.getScaledProgress());
+            context.drawTexture(TEXTURE, x + 79, y + 35, 200, 0, handler.getScaledProgress(), 16);
         }
+    }
+
+    private void renderFlame(DrawContext context, int x, int y) {
+        context.drawTexture(TEXTURE, x + 56, y + 54, 200, 20, 14, handler.getScaledFuel());
     }
 
     @Override

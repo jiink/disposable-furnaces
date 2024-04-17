@@ -33,7 +33,8 @@ public class WoodenFurnaceBlockEntity extends BlockEntity implements ExtendedScr
     protected final PropertyDelegate propertyDelegate;
     private int progress = 0;
     private int maxProgress = 20;
-    private int fuelRemaining = 100;
+    private int maxFuel = 100;
+    private int fuelRemaining = maxFuel;
     private int fuelStarted = 0; // 0 or 1
 
     public WoodenFurnaceBlockEntity(BlockPos pos, BlockState state) {
@@ -46,6 +47,7 @@ public class WoodenFurnaceBlockEntity extends BlockEntity implements ExtendedScr
                     case 1 -> WoodenFurnaceBlockEntity.this.maxProgress;
                     case 2 -> WoodenFurnaceBlockEntity.this.fuelRemaining;
                     case 3 -> WoodenFurnaceBlockEntity.this.fuelStarted;
+                    case 4 -> WoodenFurnaceBlockEntity.this.maxFuel;
                     default -> 0;
                 };
             }
@@ -57,12 +59,13 @@ public class WoodenFurnaceBlockEntity extends BlockEntity implements ExtendedScr
                     case 1 -> WoodenFurnaceBlockEntity.this.maxProgress = value;
                     case 2 -> WoodenFurnaceBlockEntity.this.fuelRemaining = value;
                     case 3 -> WoodenFurnaceBlockEntity.this.fuelStarted = value;
+                    case 4 -> WoodenFurnaceBlockEntity.this.maxFuel = value;
                 };
             }
 
             @Override
             public int size() {
-                return 4;
+                return 5;
             }
             
         };
@@ -109,7 +112,9 @@ public class WoodenFurnaceBlockEntity extends BlockEntity implements ExtendedScr
         }
         if (fuelRemaining <= 0) {
             // explode
-            world.createExplosion(null, (double)pos.getX(), (double)pos.getY(), (double)pos.getZ(), 4.0f, true, ExplosionSourceType.MOB);
+            //world.createExplosion(null, (double)pos.getX(), (double)pos.getY(), (double)pos.getZ(), 4.0f, true, ExplosionSourceType.MOB);
+            // destroy block and replace it with fire
+            world.setBlockState(pos, net.minecraft.block.Blocks.FIRE.getDefaultState());
         }
         if (isOutputSlotEmptyOrReceivable()) {
             if (this.hasRecipe()) {

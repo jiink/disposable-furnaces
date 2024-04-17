@@ -21,7 +21,7 @@ public class WoodenFurnaceScreenHandler extends ScreenHandler {
 
     public WoodenFurnaceScreenHandler(int syncId, PlayerInventory inventory, PacketByteBuf buf) {
         this(syncId, inventory, inventory.player.getWorld().getBlockEntity(buf.readBlockPos()),
-        new ArrayPropertyDelegate(4));
+        new ArrayPropertyDelegate(5));
     }
 
     public WoodenFurnaceScreenHandler(int syncId, PlayerInventory playerInventory, BlockEntity blockEntity,
@@ -33,8 +33,8 @@ public class WoodenFurnaceScreenHandler extends ScreenHandler {
         this.propertyDelegate = arrayPropertyDelegate;
         this.blockEntity = (WoodenFurnaceBlockEntity) blockEntity;
         
-        this.addSlot(new Slot(inventory, 0, 80, 11));
-        this.addSlot(new Slot(inventory, 1, 80, 59));
+        this.addSlot(new Slot(inventory, 0, 56, 35));
+        this.addSlot(new Slot(inventory, 1, 116, 35));
         this.addPlayerInventory(playerInventory);
         addProperties(arrayPropertyDelegate);
     }
@@ -64,8 +64,15 @@ public class WoodenFurnaceScreenHandler extends ScreenHandler {
     public int getScaledProgress() {
         int progress = this.propertyDelegate.get(0);
         int maxProgress = this.propertyDelegate.get(1);
-        int progressArrowSize = 26;
+        int progressArrowSize = 24;
         return maxProgress != 0 && progress != 0 ? progress * progressArrowSize / maxProgress : 0;
+    }
+
+    public int getScaledFuel() {
+        int fuel = this.propertyDelegate.get(2);
+        int maxFuel = this.propertyDelegate.get(4);
+        int flameSize = 14;
+        return maxFuel != 0 && fuel != 0 ? fuel * flameSize / maxFuel : 0;
     }
 
     @Override
