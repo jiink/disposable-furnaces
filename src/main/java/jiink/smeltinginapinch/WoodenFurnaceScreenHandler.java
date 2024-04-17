@@ -21,7 +21,7 @@ public class WoodenFurnaceScreenHandler extends ScreenHandler {
 
     public WoodenFurnaceScreenHandler(int syncId, PlayerInventory inventory, PacketByteBuf buf) {
         this(syncId, inventory, inventory.player.getWorld().getBlockEntity(buf.readBlockPos()),
-        new ArrayPropertyDelegate(2));
+        new ArrayPropertyDelegate(4));
     }
 
     public WoodenFurnaceScreenHandler(int syncId, PlayerInventory playerInventory, BlockEntity blockEntity,

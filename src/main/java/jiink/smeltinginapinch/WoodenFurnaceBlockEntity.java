@@ -22,6 +22,7 @@ import net.minecraft.text.Text;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraft.world.World.ExplosionSourceType;
 
 public class WoodenFurnaceBlockEntity extends BlockEntity implements ExtendedScreenHandlerFactory, ImplementedInventory {
 
@@ -31,7 +32,9 @@ public class WoodenFurnaceBlockEntity extends BlockEntity implements ExtendedScr
 
     protected final PropertyDelegate propertyDelegate;
     private int progress = 0;
-    private int maxProgress = 64;
+    private int maxProgress = 20;
+    private int fuelRemaining = 100;
+    private int fuelStarted = 0; // 0 or 1
 
     public WoodenFurnaceBlockEntity(BlockPos pos, BlockState state) {
         super(SmeltingInAPinch.WOODEN_FURNACE_BLOCK_ENTITY, pos, state);
@@ -41,6 +44,8 @@ public class WoodenFurnaceBlockEntity extends BlockEntity implements ExtendedScr
                 return switch (index) {
                     case 0 -> WoodenFurnaceBlockEntity.this.progress;
                     case 1 -> WoodenFurnaceBlockEntity.this.maxProgress;
+                    case 2 -> WoodenFurnaceBlockEntity.this.fuelRemaining;
+                    case 3 -> WoodenFurnaceBlockEntity.this.fuelStarted;
                     default -> 0;
                 };
             }
@@ -50,12 +55,14 @@ public class WoodenFurnaceBlockEntity extends BlockEntity implements ExtendedScr
                 switch (index) {
                     case 0 -> WoodenFurnaceBlockEntity.this.progress = value;
                     case 1 -> WoodenFurnaceBlockEntity.this.maxProgress = value;
+                    case 2 -> WoodenFurnaceBlockEntity.this.fuelRemaining = value;
+                    case 3 -> WoodenFurnaceBlockEntity.this.fuelStarted = value;
                 };
             }
 
             @Override
             public int size() {
-                return 2;
+                return 4;
             }
             
         };
@@ -97,8 +104,18 @@ public class WoodenFurnaceBlockEntity extends BlockEntity implements ExtendedScr
         if (world.isClient) {
             return;
         }
+        if (fuelStarted == 1) {
+            fuelRemaining--;
+        }
+        if (fuelRemaining <= 0) {
+            // explode
+            world.createExplosion(null, (double)pos.getX(), (double)pos.getY(), (double)pos.getZ(), 4.0f, true, ExplosionSourceType.MOB);
+        }
         if (isOutputSlotEmptyOrReceivable()) {
             if (this.hasRecipe()) {
+                if (fuelStarted == 0) {
+                    fuelStarted = 1;
+                }
                 this.increaseCraftProgress();
                 markDirty(world, pos, state);
                 if (hasCraftingFinished()) {
