@@ -1,5 +1,7 @@
 package jiink.smeltinginapinch;
 
+import java.util.Optional;
+
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.AbstractFurnaceBlockEntity;
@@ -8,12 +10,16 @@ import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventories;
+import net.minecraft.inventory.SimpleInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.network.PacketByteBuf;
+import net.minecraft.recipe.Recipe;
+import net.minecraft.recipe.RecipeEntry;
 import net.minecraft.recipe.RecipeType;
+import net.minecraft.recipe.SmeltingRecipe;
 import net.minecraft.screen.FurnaceScreenHandler;
 import net.minecraft.screen.PropertyDelegate;
 import net.minecraft.screen.ScreenHandler;
@@ -140,9 +146,24 @@ public class WoodenFurnaceBlockEntity extends BlockEntity implements ExtendedScr
         this.progress = 0;
     }
 
+    protected boolean isSmeltable(ItemStack itemStack) {
+        return this.world.getRecipeManager().getFirstMatch(RecipeType.SMELTING, new SimpleInventory(itemStack), this.world).isPresent();
+    }
+
+    private ItemStack getResultItem(ItemStack input) {
+        Optional<RecipeEntry<SmeltingRecipe>> recipeEntry = this.world.getRecipeManager()
+                                                    .getFirstMatch(RecipeType.SMELTING, new SimpleInventory(input), this.world);
+        if (recipeEntry.isPresent()) {
+            return recipeEntry.get().value().craft(new SimpleInventory(input), null);
+        } else {
+            return ItemStack.EMPTY;
+        }
+    }
+
     private void craftItem() {
-        this.removeStack(INPUT_SLOT, 1);
-        ItemStack result = new ItemStack(Items.IRON_INGOT);
+        ItemStack removedStack = this.removeStack(INPUT_SLOT, 1);
+        //ItemStack result = new ItemStack(Items.IRON_INGOT);
+        ItemStack result = getResultItem(removedStack);
         this.setStack(OUTPUT_SLOT, new ItemStack(result.getItem(), getStack(OUTPUT_SLOT).getCount() + result.getCount()));
     }
 
@@ -155,8 +176,11 @@ public class WoodenFurnaceBlockEntity extends BlockEntity implements ExtendedScr
     }
 
     private boolean hasRecipe() {
-        ItemStack result = new ItemStack(Items.IRON_INGOT);
-        boolean hasInput = getStack(INPUT_SLOT).getItem() == Items.RAW_IRON;
+        boolean hasInput = isSmeltable(getStack(INPUT_SLOT));
+        if (!hasInput) {
+            return false;
+        }
+        ItemStack result = getResultItem(getStack(INPUT_SLOT));
         return hasInput && canInsertAmountIntoOutputSlot(result) && canInsertItemIntoOutputSlot(result.getItem());
     }
 
