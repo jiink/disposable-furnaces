@@ -7,7 +7,6 @@ import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityT
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerType;
 import net.minecraft.block.Block;
 import net.minecraft.block.entity.BlockEntityType;
-import net.minecraft.client.gui.screen.ingame.HandledScreens;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroups;
@@ -59,12 +58,16 @@ public class SmeltingInAPinch implements ModInitializer {
 		new Identifier(MOD_ID, "wooden_furnace_block_entity"),
 		FabricBlockEntityTypeBuilder.create(WoodenFurnaceBlockEntity::new, WOODEN_FURNACE_BLOCK).build()
 	);
+	public static final ScreenHandlerType<WoodenFurnaceScreenHandler> WOODEN_FURNACE_SCREEN_HANDLER;
 
-	public static final ScreenHandlerType<WoodenFurnaceScreenHandler> WOODEN_FURNACE_SCREEN_HANDLER = Registry.register(
-		Registries.SCREEN_HANDLER,
-		new Identifier(MOD_ID, "wooden_furnace_screen_handler"),
-		new ExtendedScreenHandlerType<>(WoodenFurnaceScreenHandler::new)
-	);
+	static	{
+		WOODEN_FURNACE_SCREEN_HANDLER = Registry.register(
+				Registries.SCREEN_HANDLER,
+				new Identifier(MOD_ID, "wooden_furnace_screen_handler"),
+				new ExtendedScreenHandlerType<>(WoodenFurnaceScreenHandler::new)
+		);
+	}
+
 	@Override
 	public void onInitialize() {
 		// This code runs as soon as Minecraft is in a mod-load-ready state.
@@ -76,8 +79,5 @@ public class SmeltingInAPinch implements ModInitializer {
 			content.addAfter(Items.BLAST_FURNACE, WOODEN_FURANCE_BLOCK_ITEM);
 			content.addAfter(Items.TORCH, DEMO_BLOCK_ITEM);
 		});
-
-		// Make sure screen handler and screen are linked together
-		HandledScreens.register(SmeltingInAPinch.WOODEN_FURNACE_SCREEN_HANDLER, WoodenFurnaceScreen::new);
 	}
 }

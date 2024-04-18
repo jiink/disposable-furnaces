@@ -20,8 +20,10 @@ public class WoodenFurnaceScreen extends HandledScreen<WoodenFurnaceScreenHandle
     @Override
     protected void init() {
         super.init();
-        titleY = 1000;
-        playerInventoryTitleY = 1000;
+//        titleY = 1000;
+//        playerInventoryTitleY = 1000;
+        // Center the title
+        titleX = (backgroundWidth - textRenderer.getWidth(title)) / 2;
     }
 
     @Override
