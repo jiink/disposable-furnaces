@@ -11,9 +11,13 @@
         ],
         "conditions": [
           {
-            "condition": "minecraft:survives_explosion"
+            "condition": "minecraft:survives_explosion",
+            "block": "smeltinginapinch:wooden_furnace",
+            "properties": {
+              "lit": "false"
+            }
           }
         ]
       }
     ]
-  }
+}
