@@ -7,6 +7,7 @@ import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventories;
+import net.minecraft.inventory.SidedInventory;
 import net.minecraft.inventory.SimpleInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -25,13 +26,14 @@ import net.minecraft.state.property.Properties;
 import net.minecraft.text.Text;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.world.WorldEvents;
 
 import java.util.Optional;
 
-public class WoodenFurnaceBlockEntity extends BlockEntity implements ExtendedScreenHandlerFactory, ImplementedInventory {
+public class WoodenFurnaceBlockEntity extends BlockEntity implements ExtendedScreenHandlerFactory, ImplementedInventory, SidedInventory {
 
     public final DefaultedList<ItemStack> inventory = DefaultedList.ofSize(2, ItemStack.EMPTY);
     private static int INPUT_SLOT = 0;
@@ -208,5 +210,15 @@ public class WoodenFurnaceBlockEntity extends BlockEntity implements ExtendedScr
 
     private boolean isOutputSlotEmptyOrReceivable() {
         return this.getStack(OUTPUT_SLOT).isEmpty() || this.getStack(OUTPUT_SLOT).getCount() < this.getStack(OUTPUT_SLOT).getMaxCount();
+    }
+
+    @Override
+    public boolean canInsert(int slot, ItemStack stack, Direction direction) {
+        return slot == INPUT_SLOT;
+    }
+
+    @Override
+    public boolean canExtract(int slot, ItemStack stack, Direction direction) {
+        return slot == OUTPUT_SLOT;
     }
 }
