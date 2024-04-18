@@ -4,6 +4,7 @@ import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
+import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerType;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -84,6 +85,7 @@ public class SmeltingInAPinch implements ModInitializer {
 			content.addAfter(Items.BLAST_FURNACE, WOODEN_FURANCE_BLOCK_ITEM);
 			content.addAfter(Items.TORCH, DEMO_BLOCK_ITEM);
 		});
+		FlammableBlockRegistry.getDefaultInstance().add(WOODEN_FURNACE_BLOCK, 5, 5);
 	}
 
 	private static ToIntFunction<BlockState> blockstateToLuminance() {
