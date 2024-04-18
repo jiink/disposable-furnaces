@@ -1,6 +1,7 @@
 package jiink.smeltinginapinch;
 
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -11,6 +12,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.network.PacketByteBuf;
+import net.minecraft.particle.ParticleTypes;
 import net.minecraft.recipe.RecipeEntry;
 import net.minecraft.recipe.RecipeType;
 import net.minecraft.recipe.SmeltingRecipe;
@@ -22,6 +24,8 @@ import net.minecraft.text.Text;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraft.server.world.ServerWorld;
+import net.minecraft.world.WorldEvents;
 
 import java.util.Optional;
 
@@ -117,6 +121,8 @@ public class WoodenFurnaceBlockEntity extends BlockEntity implements ExtendedScr
         if (fuelRemaining <= 0) {
             // explode
             //world.createExplosion(null, (double)pos.getX(), (double)pos.getY(), (double)pos.getZ(), 4.0f, true, ExplosionSourceType.MOB);
+            // make block breaking particles and sound
+            world.syncWorldEvent(WorldEvents.BLOCK_BROKEN, pos, Block.getRawIdFromState(state));
             // destroy block and replace it with fire
             world.setBlockState(pos, net.minecraft.block.Blocks.FIRE.getDefaultState());
         }
