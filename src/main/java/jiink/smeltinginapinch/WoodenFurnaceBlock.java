@@ -95,15 +95,17 @@ public class WoodenFurnaceBlock extends BlockWithEntity {
 
     @Override
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
-        if (!world.isClient && hand == Hand.MAIN_HAND) {
+        if (world.isClient) {
+            return ActionResult.SUCCESS;
+        }
+        if (hand == Hand.MAIN_HAND) {
             NamedScreenHandlerFactory screenHandlerFactory = (WoodenFurnaceBlockEntity)world.getBlockEntity(pos);
             if (screenHandlerFactory != null) {
                 player.openHandledScreen(screenHandlerFactory);
                 return ActionResult.SUCCESS;
             }
-            
         }
-        return ActionResult.SUCCESS;
+        return ActionResult.PASS;
     }
 
     @Environment(EnvType.CLIENT)
