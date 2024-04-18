@@ -21,7 +21,6 @@ import org.slf4j.LoggerFactory;
 import net.minecraft.util.Identifier;
 
 
-
 public class SmeltingInAPinch implements ModInitializer {
 	
 	public static final String MOD_ID = "smeltinginapinch";
