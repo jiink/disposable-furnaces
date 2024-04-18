@@ -6,6 +6,7 @@ import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerType;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
@@ -15,9 +16,13 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.screen.ScreenHandlerType;
 
+import net.minecraft.sound.BlockSoundGroup;
+import net.minecraft.state.property.Properties;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import net.minecraft.util.Identifier;
+
+import java.util.function.ToIntFunction;
 
 
 public class SmeltingInAPinch implements ModInitializer {
@@ -46,7 +51,7 @@ public class SmeltingInAPinch implements ModInitializer {
 	public static final Block WOODEN_FURNACE_BLOCK = Registry.register(
 		Registries.BLOCK,
 		new Identifier(MOD_ID, "wooden_furnace"),
-		new WoodenFurnaceBlock(Block.Settings.create().strength(1.0f))
+		new WoodenFurnaceBlock(FabricBlockSettings.create().strength(2.5f).sounds(BlockSoundGroup.WOOD).burnable().luminance(blockstateToLuminance()))
 	);
 	public static final Item WOODEN_FURANCE_BLOCK_ITEM = Registry.register(
 		Registries.ITEM,
@@ -79,5 +84,9 @@ public class SmeltingInAPinch implements ModInitializer {
 			content.addAfter(Items.BLAST_FURNACE, WOODEN_FURANCE_BLOCK_ITEM);
 			content.addAfter(Items.TORCH, DEMO_BLOCK_ITEM);
 		});
+	}
+
+	private static ToIntFunction<BlockState> blockstateToLuminance() {
+		return (blockState) -> (Boolean)blockState.get(Properties.LIT) ? 13 : 0;
 	}
 }
