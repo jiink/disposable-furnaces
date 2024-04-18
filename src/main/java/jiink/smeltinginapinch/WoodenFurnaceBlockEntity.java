@@ -19,6 +19,8 @@ import net.minecraft.recipe.SmeltingRecipe;
 import net.minecraft.screen.PropertyDelegate;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.sound.SoundCategory;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.state.property.Properties;
 import net.minecraft.text.Text;
 import net.minecraft.util.collection.DefaultedList;
@@ -123,6 +125,14 @@ public class WoodenFurnaceBlockEntity extends BlockEntity implements ExtendedScr
             //world.createExplosion(null, (double)pos.getX(), (double)pos.getY(), (double)pos.getZ(), 4.0f, true, ExplosionSourceType.MOB);
             // make block breaking particles and sound
             world.syncWorldEvent(WorldEvents.BLOCK_BROKEN, pos, Block.getRawIdFromState(state));
+            world.playSound(
+                    null,
+                    pos,
+                    SoundEvents.BLOCK_SCAFFOLDING_BREAK,
+                    SoundCategory.BLOCKS,
+                    1f,
+                    0.75f
+            );
             // destroy block and replace it with fire
             world.setBlockState(pos, net.minecraft.block.Blocks.FIRE.getDefaultState());
         }
