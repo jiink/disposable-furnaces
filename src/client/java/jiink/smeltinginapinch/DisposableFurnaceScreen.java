@@ -9,11 +9,11 @@ import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 
-public class WoodenFurnaceScreen extends HandledScreen<WoodenFurnaceScreenHandler> {
+public class DisposableFurnaceScreen extends HandledScreen<DisposableFurnaceScreenHandler> {
 
     private static final Identifier TEXTURE = new Identifier(SmeltingInAPinch.MOD_ID, "textures/gui/wooden_furnace_gui.png");
 
-    public WoodenFurnaceScreen(WoodenFurnaceScreenHandler handler, PlayerInventory inventory, Text title) {
+    public DisposableFurnaceScreen(DisposableFurnaceScreenHandler handler, PlayerInventory inventory, Text title) {
         super(handler, inventory, title);
     }
 

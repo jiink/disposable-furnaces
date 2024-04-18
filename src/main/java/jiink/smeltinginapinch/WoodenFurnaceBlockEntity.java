@@ -13,7 +13,6 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.network.PacketByteBuf;
-import net.minecraft.particle.ParticleTypes;
 import net.minecraft.recipe.RecipeEntry;
 import net.minecraft.recipe.RecipeType;
 import net.minecraft.recipe.SmeltingRecipe;
@@ -28,7 +27,6 @@ import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
-import net.minecraft.server.world.ServerWorld;
 import net.minecraft.world.WorldEvents;
 
 import java.util.Optional;
@@ -87,7 +85,7 @@ public class WoodenFurnaceBlockEntity extends BlockEntity implements ExtendedScr
 
     @Override
     public ScreenHandler createMenu(int syncId, PlayerInventory playerInventory, PlayerEntity player) {
-        return new WoodenFurnaceScreenHandler(syncId, playerInventory, this, this.propertyDelegate);
+        return new DisposableFurnaceScreenHandler(syncId, playerInventory, this, this.propertyDelegate);
     }
 
     @Override

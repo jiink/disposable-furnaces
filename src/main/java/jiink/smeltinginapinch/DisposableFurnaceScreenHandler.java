@@ -15,7 +15,7 @@ import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.slot.Slot;
 import net.minecraft.world.World;
 
-public class WoodenFurnaceScreenHandler extends ScreenHandler {
+public class DisposableFurnaceScreenHandler extends ScreenHandler {
 
     private final Inventory inventory;
     private final PropertyDelegate propertyDelegate;
@@ -23,14 +23,14 @@ public class WoodenFurnaceScreenHandler extends ScreenHandler {
     protected final World world;
     private final RecipeType<SmeltingRecipe> recipeType = RecipeType.SMELTING;
 
-    public WoodenFurnaceScreenHandler(int syncId, PlayerInventory inventory, PacketByteBuf buf) {
+    public DisposableFurnaceScreenHandler(int syncId, PlayerInventory inventory, PacketByteBuf buf) {
         this(syncId, inventory, inventory.player.getWorld().getBlockEntity(buf.readBlockPos()),
         new ArrayPropertyDelegate(5));
     }
 
-    public WoodenFurnaceScreenHandler(int syncId, PlayerInventory playerInventory, BlockEntity blockEntity,
-        PropertyDelegate arrayPropertyDelegate) {
-        super(SmeltingInAPinch.WOODEN_FURNACE_SCREEN_HANDLER, syncId);
+    public DisposableFurnaceScreenHandler(int syncId, PlayerInventory playerInventory, BlockEntity blockEntity,
+                                          PropertyDelegate arrayPropertyDelegate) {
+        super(SmeltingInAPinch.DISPOSABLE_FURNACE_SCREEN_HANDLER, syncId);
         checkSize(((Inventory) blockEntity), 2);
         this.inventory = ((Inventory) blockEntity);
         playerInventory.onOpen(playerInventory.player);

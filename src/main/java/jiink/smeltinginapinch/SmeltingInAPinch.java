@@ -64,13 +64,13 @@ public class SmeltingInAPinch implements ModInitializer {
 		new Identifier(MOD_ID, "wooden_furnace_block_entity"),
 		FabricBlockEntityTypeBuilder.create(WoodenFurnaceBlockEntity::new, WOODEN_FURNACE_BLOCK).build()
 	);
-	public static final ScreenHandlerType<WoodenFurnaceScreenHandler> WOODEN_FURNACE_SCREEN_HANDLER;
+	public static final ScreenHandlerType<DisposableFurnaceScreenHandler> DISPOSABLE_FURNACE_SCREEN_HANDLER;
 
 	static	{
-		WOODEN_FURNACE_SCREEN_HANDLER = Registry.register(
+		DISPOSABLE_FURNACE_SCREEN_HANDLER = Registry.register(
 				Registries.SCREEN_HANDLER,
 				new Identifier(MOD_ID, "wooden_furnace_screen_handler"),
-				new ExtendedScreenHandlerType<>(WoodenFurnaceScreenHandler::new)
+				new ExtendedScreenHandlerType<>(DisposableFurnaceScreenHandler::new)
 		);
 	}
 

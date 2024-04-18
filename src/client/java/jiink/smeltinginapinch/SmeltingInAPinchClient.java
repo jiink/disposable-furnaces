@@ -13,6 +13,6 @@ public class SmeltingInAPinchClient implements ClientModInitializer {
 		// This entrypoint is suitable for setting up client-specific logic, such as rendering.
 
 		// Make sure screen handler and screen are linked together
-		HandledScreens.register(SmeltingInAPinch.WOODEN_FURNACE_SCREEN_HANDLER, WoodenFurnaceScreen::new);
+		HandledScreens.register(SmeltingInAPinch.DISPOSABLE_FURNACE_SCREEN_HANDLER, DisposableFurnaceScreen::new);
 	}
 }
