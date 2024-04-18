@@ -82,7 +82,7 @@ public class WoodenFurnaceBlockEntity extends BlockEntity implements ExtendedScr
 
     @Override
     public Text getDisplayName() {
-        return Text.literal("Wooden Furnace");
+        return Text.translatable(getCachedState().getBlock().getTranslationKey());
     }
 
     @Override
