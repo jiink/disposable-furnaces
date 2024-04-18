@@ -47,6 +47,10 @@ public class WoodenFurnaceScreen extends HandledScreen<WoodenFurnaceScreenHandle
     private void renderFlame(DrawContext context, int x, int y) {
         int flameHeight = handler.getScaledFuel();
         context.drawTexture(TEXTURE, x + 56, y + 54 + (14 - flameHeight), 200, 20 + (14 - flameHeight), 14, flameHeight);
+        if (flameHeight <= 0) // Furnace is probably destroyed or right about to be destroyed
+        {
+            close();
+        }
     }
 
     @Override
