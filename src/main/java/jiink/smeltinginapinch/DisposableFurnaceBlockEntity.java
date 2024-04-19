@@ -27,6 +27,7 @@ import net.minecraft.text.Text;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
+import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldEvents;
 
@@ -44,6 +45,8 @@ public abstract class DisposableFurnaceBlockEntity extends BlockEntity implement
     private int maxFuel;
     private int fuelRemaining;
     private int fuelStarted = 0; // 0 or 1
+
+    private Random random = Random.create();
 
     public DisposableFurnaceBlockEntity(BlockPos pos, BlockState state, int numItemsCanSmelt, float howLongCanSmeltSec, BlockEntityType<?> type) {
         super(type, pos, state);
@@ -132,6 +135,7 @@ public abstract class DisposableFurnaceBlockEntity extends BlockEntity implement
             if (this.hasRecipe()) {
                 if (fuelStarted == 0) {
                     fuelStarted = 1;
+                    onSmeltingBegin(world, pos, state);
                 }
                 this.increaseCraftProgress();
                 markDirty(world, pos, state);
@@ -146,6 +150,18 @@ public abstract class DisposableFurnaceBlockEntity extends BlockEntity implement
             this.resetProgress();
             markDirty(world, pos, state  );
         }
+        if (random.nextDouble() < 0.1) {
+            onRandomTick(world, pos, state, random);
+        }
+    }
+
+    protected void onRandomTick(World world, BlockPos pos, BlockState state, Random random) {
+        return;
+    }
+
+
+    protected void onSmeltingBegin(World world, BlockPos pos, BlockState state) {
+        return;
     }
 
     protected void burnoutDestroy(World world, BlockPos pos, BlockState state) {

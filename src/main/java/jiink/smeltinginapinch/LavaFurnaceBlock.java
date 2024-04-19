@@ -3,19 +3,24 @@ package jiink.smeltinginapinch;
 import com.mojang.serialization.MapCodec;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
+import net.minecraft.block.AbstractFireBlock;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.BlockWithEntity;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityTicker;
 import net.minecraft.block.entity.BlockEntityType;
+import net.minecraft.enchantment.EnchantmentHelper;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.fluid.FluidState;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.random.Random;
+import net.minecraft.world.GameRules;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldView;
 import org.jetbrains.annotations.Nullable;
 
 public class LavaFurnaceBlock extends DisposableFurnaceBlock {
@@ -44,7 +49,7 @@ public class LavaFurnaceBlock extends DisposableFurnaceBlock {
             double z = (double) pos.getZ() + 0.5D;
 
             if (random.nextDouble() < 0.1D) {
-                world.playSound(x, y, z, SoundEvents.BLOCK_FURNACE_FIRE_CRACKLE, SoundCategory.BLOCKS, 1.0F, 1.0F, false);
+                world.playSound(x, y, z, SoundEvents.BLOCK_LAVA_POP, SoundCategory.BLOCKS, 1.0F, (float) (random.nextDouble() * 0.4D + 0.8D), false);
             }
 
             Direction direction_1 = state.get(FACING);
@@ -59,6 +64,15 @@ public class LavaFurnaceBlock extends DisposableFurnaceBlock {
             world.addParticle(ParticleTypes.FLAME, x + double_6, y + double_7, z + double_8, double_6 * 0.5D, 0.0D, double_8 * 0.5D);
             world.addParticle(ParticleTypes.LAVA, x + double_6, y + double_7, z + double_8, 0.0D, 0.0D, 0.0D);
         }
+    }
+
+    @Override
+    public void onSteppedOn(World world, BlockPos pos, BlockState state, Entity entity) {
+        if (!entity.bypassesSteppingEffects() && entity instanceof LivingEntity && !EnchantmentHelper.hasFrostWalker((LivingEntity)entity)) {
+            entity.damage(world.getDamageSources().hotFloor(), 1.0f);
+            entity.setOnFireFor(8);
+        }
+        super.onSteppedOn(world, pos, state, entity);
     }
 
     @Nullable

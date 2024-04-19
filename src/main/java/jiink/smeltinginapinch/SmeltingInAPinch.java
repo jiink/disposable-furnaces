@@ -137,7 +137,7 @@ public class SmeltingInAPinch implements ModInitializer {
 	public static final Block LAVA_FURNACE_BLOCK = Registry.register(
 			Registries.BLOCK,
 			new Identifier(MOD_ID, "lava_furnace"),
-			new LavaFurnaceBlock(FabricBlockSettings.create().strength(5.0f).sounds(BlockSoundGroup.STONE).burnable().luminance(blockstateToLuminance()))
+			new LavaFurnaceBlock(FabricBlockSettings.create().strength(7.0f).sounds(BlockSoundGroup.DEEPSLATE).luminance(15))
 	);
 	public static final Item LAVA_FURANCE_BLOCK_ITEM = Registry.register(
 			Registries.ITEM,
