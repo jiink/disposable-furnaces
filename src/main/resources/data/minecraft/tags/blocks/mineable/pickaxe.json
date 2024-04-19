@@ -1,6 +1,9 @@
 {
   "replace": false,
   "values": [
-    "smeltinginapinch:coal_furnace"
+    "smeltinginapinch:coal_furnace",
+    "smeltinginapinch:charcoal_furnace",
+    "smeltinginapinch:lava_furnace",
+    "smeltinginapinch:blaze_furnace"
   ]
 }

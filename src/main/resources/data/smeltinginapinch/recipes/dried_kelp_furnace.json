@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "KKK",
+    "K K",
+    "KKK"
+  ],
+  "key": {
+    "K": {
+      "item": "minecraft:dried_kelp_block"
+    }
+  },
+  "result": {
+    "item": "smeltinginapinch:dried_kelp_furnace",
+    "count": 1
+  }
+}
