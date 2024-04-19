@@ -30,7 +30,7 @@ public class CharcoalFurnaceBlock extends DisposableFurnaceBlock {
 
     @Override
     public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
-        return new CoalFurnaceBlockEntity(pos, state);
+        return new CharcoalFurnaceBlockEntity(pos, state);
     }
 
     @Environment(EnvType.CLIENT)

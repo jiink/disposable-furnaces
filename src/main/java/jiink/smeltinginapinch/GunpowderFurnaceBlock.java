@@ -32,7 +32,7 @@ public class GunpowderFurnaceBlock extends DisposableFurnaceBlock {
 
     @Override
     public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
-        return new WoodenFurnaceBlockEntity(pos, state);
+        return new GunpowderFurnaceBlockEntity(pos, state);
     }
 
     @Environment(EnvType.CLIENT)
