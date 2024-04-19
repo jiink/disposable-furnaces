@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "CCC",
+    "C C",
+    "CCC"
+  ],
+  "key": {
+    "C": {
+      "tag": "minecraft:coal"
+    }
+  },
+  "result": {
+    "item": "smeltinginapinch:coal_furnace",
+    "count": 1
+  }
+}

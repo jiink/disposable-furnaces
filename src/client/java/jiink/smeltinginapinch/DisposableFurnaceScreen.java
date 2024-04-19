@@ -11,7 +11,7 @@ import net.minecraft.util.Identifier;
 
 public class DisposableFurnaceScreen extends HandledScreen<DisposableFurnaceScreenHandler> {
 
-    private static final Identifier TEXTURE = new Identifier(SmeltingInAPinch.MOD_ID, "textures/gui/wooden_furnace_gui.png");
+    private static final Identifier TEXTURE = new Identifier(SmeltingInAPinch.MOD_ID, "textures/gui/disposable_furnace_gui.png");
 
     public DisposableFurnaceScreen(DisposableFurnaceScreenHandler handler, PlayerInventory inventory, Text title) {
         super(handler, inventory, title);
