@@ -7,7 +7,7 @@
   ],
   "key": {
     "C": {
-      "tag": "minecraft:coal"
+      "item": "minecraft:coal"
     }
   },
   "result": {

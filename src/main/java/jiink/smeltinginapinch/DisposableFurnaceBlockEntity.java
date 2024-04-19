@@ -4,6 +4,7 @@ import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventories;
@@ -44,8 +45,8 @@ public abstract class DisposableFurnaceBlockEntity extends BlockEntity implement
     private int fuelRemaining;
     private int fuelStarted = 0; // 0 or 1
 
-    public DisposableFurnaceBlockEntity(BlockPos pos, BlockState state, int numItemsCanSmelt, float howLongCanSmeltSec) {
-        super(SmeltingInAPinch.WOODEN_FURNACE_BLOCK_ENTITY, pos, state);
+    public DisposableFurnaceBlockEntity(BlockPos pos, BlockState state, int numItemsCanSmelt, float howLongCanSmeltSec, BlockEntityType<?> type) {
+        super(type, pos, state);
         int howLongCanSmeltTicks = (int)(howLongCanSmeltSec * 20.0F);
         maxFuel = howLongCanSmeltTicks;
         fuelRemaining = maxFuel;
