@@ -1,4 +1,9 @@
 {
   "block.smeltinginapinch.wooden_furnace": "Wooden Furnace",
-  "block.smeltinginapinch.coal_furnace": "Coal Furnace"
+  "block.smeltinginapinch.dried_kelp_furnace": "Dried Kelp Furnace",
+  "block.smeltinginapinch.coal_furnace": "Coal Furnace",
+  "block.smeltinginapinch.charcoal_furnace": "Charcoal Furnace",
+  "block.smeltinginapinch.gunpowder_furnace": "Gunpowder Furnace",
+  "block.smeltinginapinch.lava_furnace": "Lava Furnace",
+  "block.smeltinginapinch.blaze_furnace": "Blaze Furnace"
 }
