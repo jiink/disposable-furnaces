@@ -50,26 +50,41 @@ public class SmeltingInAPinch implements ModInitializer {
 	);
 
 	public static final Block WOODEN_FURNACE_BLOCK = Registry.register(
-		Registries.BLOCK,
-		new Identifier(MOD_ID, "wooden_furnace"),
-		new WoodenFurnaceBlock(FabricBlockSettings.create().strength(2.5f).sounds(BlockSoundGroup.WOOD).burnable().luminance(blockstateToLuminance()))
+			Registries.BLOCK,
+			new Identifier(MOD_ID, "wooden_furnace"),
+			new WoodenFurnaceBlock(FabricBlockSettings.create().strength(2.5f).sounds(BlockSoundGroup.WOOD).burnable().luminance(blockstateToLuminance()))
 	);
 	public static final Item WOODEN_FURANCE_BLOCK_ITEM = Registry.register(
-		Registries.ITEM,
-		new Identifier(MOD_ID, "wooden_furnace"),
-		new BlockItem(WOODEN_FURNACE_BLOCK, new Item.Settings())
+			Registries.ITEM,
+			new Identifier(MOD_ID, "wooden_furnace"),
+			new BlockItem(WOODEN_FURNACE_BLOCK, new Item.Settings())
 	);
 	public static final BlockEntityType<WoodenFurnaceBlockEntity> WOODEN_FURNACE_BLOCK_ENTITY = Registry.register(
-		Registries.BLOCK_ENTITY_TYPE,
-		new Identifier(MOD_ID, "wooden_furnace_block_entity"),
-		FabricBlockEntityTypeBuilder.create(WoodenFurnaceBlockEntity::new, WOODEN_FURNACE_BLOCK).build()
+			Registries.BLOCK_ENTITY_TYPE,
+			new Identifier(MOD_ID, "wooden_furnace_block_entity"),
+			FabricBlockEntityTypeBuilder.create(WoodenFurnaceBlockEntity::new, WOODEN_FURNACE_BLOCK).build()
+	);
+	public static final Block COAL_FURNACE_BLOCK = Registry.register(
+			Registries.BLOCK,
+			new Identifier(MOD_ID, "coal_furnace"),
+			new CoalFurnaceBlock(FabricBlockSettings.create().strength(5.0f).sounds(BlockSoundGroup.STONE).burnable().luminance(blockstateToLuminance()))
+	);
+	public static final Item COAL_FURANCE_BLOCK_ITEM = Registry.register(
+			Registries.ITEM,
+			new Identifier(MOD_ID, "coal_furnace"),
+			new BlockItem(COAL_FURNACE_BLOCK, new Item.Settings())
+	);
+	public static final BlockEntityType<CoalFurnaceBlockEntity> COAL_FURNACE_BLOCK_ENTITY = Registry.register(
+			Registries.BLOCK_ENTITY_TYPE,
+			new Identifier(MOD_ID, "coal_furnace_block_entity"),
+			FabricBlockEntityTypeBuilder.create(CoalFurnaceBlockEntity::new, COAL_FURNACE_BLOCK).build()
 	);
 	public static final ScreenHandlerType<DisposableFurnaceScreenHandler> DISPOSABLE_FURNACE_SCREEN_HANDLER;
 
 	static	{
 		DISPOSABLE_FURNACE_SCREEN_HANDLER = Registry.register(
 				Registries.SCREEN_HANDLER,
-				new Identifier(MOD_ID, "wooden_furnace_screen_handler"),
+				new Identifier(MOD_ID, "disposable_furnace_screen_handler"),
 				new ExtendedScreenHandlerType<>(DisposableFurnaceScreenHandler::new)
 		);
 	}
@@ -82,10 +97,12 @@ public class SmeltingInAPinch implements ModInitializer {
 
 		LOGGER.info("Hello Fabric world!");
 		ItemGroupEvents.modifyEntriesEvent(ItemGroups.FUNCTIONAL).register(content -> {
+			content.addAfter(Items.BLAST_FURNACE, COAL_FURANCE_BLOCK_ITEM);
 			content.addAfter(Items.BLAST_FURNACE, WOODEN_FURANCE_BLOCK_ITEM);
 			content.addAfter(Items.TORCH, DEMO_BLOCK_ITEM);
 		});
 		FlammableBlockRegistry.getDefaultInstance().add(WOODEN_FURNACE_BLOCK, 5, 5);
+		FlammableBlockRegistry.getDefaultInstance().add(COAL_FURNACE_BLOCK, 5, 5);
 	}
 
 	private static ToIntFunction<BlockState> blockstateToLuminance() {

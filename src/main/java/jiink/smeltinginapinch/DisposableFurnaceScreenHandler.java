@@ -19,7 +19,7 @@ public class DisposableFurnaceScreenHandler extends ScreenHandler {
 
     private final Inventory inventory;
     private final PropertyDelegate propertyDelegate;
-    public final WoodenFurnaceBlockEntity blockEntity;
+    public final DisposableFurnaceBlockEntity blockEntity;
     protected final World world;
     private final RecipeType<SmeltingRecipe> recipeType = RecipeType.SMELTING;
 
@@ -35,7 +35,7 @@ public class DisposableFurnaceScreenHandler extends ScreenHandler {
         this.inventory = ((Inventory) blockEntity);
         playerInventory.onOpen(playerInventory.player);
         this.propertyDelegate = arrayPropertyDelegate;
-        this.blockEntity = (WoodenFurnaceBlockEntity) blockEntity;
+        this.blockEntity = (DisposableFurnaceBlockEntity) blockEntity;
         this.world = playerInventory.player.getWorld();
         
         this.addSlot(new Slot(inventory, 0, 56, 35));

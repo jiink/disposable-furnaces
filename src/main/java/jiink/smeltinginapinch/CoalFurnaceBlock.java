@@ -5,7 +5,6 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.BlockWithEntity;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityTicker;
 import net.minecraft.block.entity.BlockEntityType;
@@ -18,9 +17,8 @@ import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
-public class WoodenFurnaceBlock extends DisposableFurnaceBlock {
-
-    public WoodenFurnaceBlock(Settings settings) {
+public class CoalFurnaceBlock extends DisposableFurnaceBlock {
+    public CoalFurnaceBlock(Settings settings) {
         super(settings);
     }
 
@@ -32,7 +30,7 @@ public class WoodenFurnaceBlock extends DisposableFurnaceBlock {
 
     @Override
     public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
-        return new WoodenFurnaceBlockEntity(pos, state);
+        return new CoalFurnaceBlockEntity(pos, state);
     }
 
     @Environment(EnvType.CLIENT)
@@ -44,7 +42,7 @@ public class WoodenFurnaceBlock extends DisposableFurnaceBlock {
             double z = (double) pos.getZ() + 0.5D;
 
             if (random.nextDouble() < 0.1D) {
-                world.playSound(x, y, z, SoundEvents.BLOCK_FURNACE_FIRE_CRACKLE, SoundCategory.BLOCKS, 1.0F, 1.0F, false);
+                world.playSound(x, y, z, SoundEvents.BLOCK_CAMPFIRE_CRACKLE, SoundCategory.BLOCKS, 1.0F, 1.0F, false);
             }
 
             Direction direction_1 = state.get(FACING);
@@ -55,14 +53,14 @@ public class WoodenFurnaceBlock extends DisposableFurnaceBlock {
             double double_7 = random.nextDouble() * 6.0D / 16.0D;
             double double_8 = direction$Axis_1 == Direction.Axis.Z ? (double) direction_1.getOffsetZ() * 0.52D : double_5;
 
-            world.addParticle(ParticleTypes.SMOKE, x + double_6, y + double_7, z + double_8, double_6 * 0.5D, 0.0D, double_8 * 0.5D);
-            world.addParticle(ParticleTypes.FLAME, x + double_6, y + double_7, z + double_8, double_6 * 0.5D, 0.0D, double_8 * 0.5D);
-            world.addParticle(ParticleTypes.LAVA, x + double_6, y + double_7, z + double_8, 0.0D, 0.0D, 0.0D);
+            world.addParticle(ParticleTypes.CAMPFIRE_COSY_SMOKE, x + double_6, y + double_7, z + double_8, double_6 * 0.5D, 0.0D, double_8 * 0.5D);
+            world.addParticle(ParticleTypes.LAVA, x + double_6, y + double_7, z + double_8, double_6 * 0.5D, 0.0D, double_8 * 0.5D);
+            world.addParticle(ParticleTypes.CAMPFIRE_SIGNAL_SMOKE, x + double_6, y + double_7, z + double_8, 0.0D, 0.0D, 0.0D);
         }
     }
 
     @Nullable
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
-        return validateTicker(type, SmeltingInAPinch.WOODEN_FURNACE_BLOCK_ENTITY, (world1, pos, state1, be) -> ((DisposableFurnaceBlockEntity) be).tick(world1, pos, state1));
+        return validateTicker(type, SmeltingInAPinch.COAL_FURNACE_BLOCK_ENTITY, (world1, pos, state1, be) -> ((DisposableFurnaceBlockEntity) be).tick(world1, pos, state1));
     }
 }
