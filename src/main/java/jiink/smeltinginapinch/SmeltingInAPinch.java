@@ -16,7 +16,7 @@ import net.minecraft.item.Items;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.screen.ScreenHandlerType;
-
+import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.state.property.Properties;
 import org.slf4j.Logger;
@@ -101,8 +101,12 @@ public class SmeltingInAPinch implements ModInitializer {
 			content.addAfter(Items.BLAST_FURNACE, WOODEN_FURANCE_BLOCK_ITEM);
 			content.addAfter(Items.TORCH, DEMO_BLOCK_ITEM);
 		});
+
 		FlammableBlockRegistry.getDefaultInstance().add(WOODEN_FURNACE_BLOCK, 5, 5);
 		FlammableBlockRegistry.getDefaultInstance().add(COAL_FURNACE_BLOCK, 5, 5);
+
+		FuelRegistry.INSTANCE.add(WOODEN_FURANCE_BLOCK_ITEM, 300 * 8);
+		FuelRegistry.INSTANCE.add(COAL_FURANCE_BLOCK_ITEM, 1600 * 8);
 	}
 
 	private static ToIntFunction<BlockState> blockstateToLuminance() {
