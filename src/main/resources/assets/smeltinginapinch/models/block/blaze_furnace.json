@@ -1,0 +1,9 @@
+{
+    "parent": "block/orientable",
+    "textures": {
+        "top": "smeltinginapinch:block/blaze_furnace_top",
+        "front": "smeltinginapinch:block/blaze_furnace_front",
+        "side": "smeltinginapinch:block/blaze_furnace_side",
+        "bottom": "smeltinginapinch:block/blaze_furnace_bottom"
+    }
+}

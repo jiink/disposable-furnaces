@@ -1,0 +1,8 @@
+{
+    "parent": "block/orientable",
+    "textures": {
+        "top": "smeltinginapinch:block/dried_kelp_furnace_top",
+        "front": "smeltinginapinch:block/dried_kelp_furnace_front",
+        "side": "smeltinginapinch:block/dried_kelp_furnace_side"
+    }
+}
