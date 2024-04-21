@@ -8,6 +8,9 @@ import net.minecraft.block.HorizontalFacingBlock;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityTicker;
 import net.minecraft.block.entity.BlockEntityType;
+import net.minecraft.enchantment.EnchantmentHelper;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.item.ItemPlacementContext;
@@ -119,6 +122,18 @@ public abstract class DisposableFurnaceBlock extends BlockWithEntity {
 
             world.addParticle(ParticleTypes.SMOKE, x + double_6, y + double_7, z + double_8, double_6 * 0.5D, 0.0D, double_8 * 0.5D);
         }
+    }
+
+    // Hurt people when it's lit
+    @Override
+    public void onSteppedOn(World world, BlockPos pos, BlockState state, Entity entity) {
+        if (state.get(LIT)) {
+            if (!entity.bypassesSteppingEffects() && entity instanceof LivingEntity && !EnchantmentHelper.hasFrostWalker((LivingEntity) entity)) {
+                entity.damage(world.getDamageSources().hotFloor(), 1.0f);
+                entity.setOnFireFor(8);
+            }
+        }
+        super.onSteppedOn(world, pos, state, entity);
     }
 
     @Override
