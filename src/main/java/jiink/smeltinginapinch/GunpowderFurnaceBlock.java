@@ -43,21 +43,22 @@ public class GunpowderFurnaceBlock extends DisposableFurnaceBlock {
             double y = (double) pos.getY();
             double z = (double) pos.getZ() + 0.5D;
 
-            if (random.nextDouble() < 0.1D) {
-                world.playSound(x, y, z, SoundEvents.BLOCK_FURNACE_FIRE_CRACKLE, SoundCategory.BLOCKS, 1.0F, 1.0F, false);
+            if (random.nextDouble() < 0.3D) {
+                world.playSound(x, y, z, SoundEvents.ENTITY_TNT_PRIMED, SoundCategory.BLOCKS, 1.0F, 1.0F, false);
             }
+            for (int i = 0; i < 4; i++) {
+                Direction direction_1 = state.get(FACING);
+                Direction.Axis direction$Axis_1 = direction_1.getAxis();
 
-            Direction direction_1 = state.get(FACING);
-            Direction.Axis direction$Axis_1 = direction_1.getAxis();
+                double double_5 = random.nextDouble() * 0.6D - 0.3D;
+                double double_6 = direction$Axis_1 == Direction.Axis.X ? (double) direction_1.getOffsetX() * 0.52D : double_5;
+                double double_7 = random.nextDouble() * 6.0D / 16.0D;
+                double double_8 = direction$Axis_1 == Direction.Axis.Z ? (double) direction_1.getOffsetZ() * 0.52D : double_5;
 
-            double double_5 = random.nextDouble() * 0.6D - 0.3D;
-            double double_6 = direction$Axis_1 == Direction.Axis.X ? (double) direction_1.getOffsetX() * 0.52D : double_5;
-            double double_7 = random.nextDouble() * 6.0D / 16.0D;
-            double double_8 = direction$Axis_1 == Direction.Axis.Z ? (double) direction_1.getOffsetZ() * 0.52D : double_5;
-
-            world.addParticle(ParticleTypes.SMOKE, x + double_6, y + double_7, z + double_8, double_6 * 0.5D, 0.0D, double_8 * 0.5D);
-            world.addParticle(ParticleTypes.FLAME, x + double_6, y + double_7, z + double_8, double_6 * 0.5D, 0.0D, double_8 * 0.5D);
-            world.addParticle(ParticleTypes.LAVA, x + double_6, y + double_7, z + double_8, 0.0D, 0.0D, 0.0D);
+                world.addParticle(ParticleTypes.WHITE_SMOKE, x + double_6, y + double_7, z + double_8, double_6 * 0.2D, 0.2D, double_8 * 0.2D);
+                world.addParticle(ParticleTypes.FIREWORK, x + double_6, y + double_7, z + double_8, double_6 * 0.2D, 0.2D, double_8 * 0.2D);
+                world.addParticle(ParticleTypes.SWEEP_ATTACK, x + double_6, y + double_7, z + double_8, 0.0D, 0.0D, 0.0D);
+            }
         }
     }
 
