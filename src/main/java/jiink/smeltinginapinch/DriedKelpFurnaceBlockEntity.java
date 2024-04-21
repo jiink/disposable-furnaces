@@ -16,14 +16,12 @@ public class DriedKelpFurnaceBlockEntity extends DisposableFurnaceBlockEntity {
 
     @Override
     protected void burnoutDestroy(World world, BlockPos pos, BlockState state) {
-        // explode
-        //world.createExplosion(null, (double)pos.getX(), (double)pos.getY(), (double)pos.getZ(), 4.0f, true, ExplosionSourceType.MOB);
         // make block breaking particles and sound
         world.syncWorldEvent(WorldEvents.BLOCK_BROKEN, pos, Block.getRawIdFromState(state));
         world.playSound(
                 null,
                 pos,
-                SoundEvents.BLOCK_SCAFFOLDING_BREAK,
+                SoundEvents.BLOCK_CAMPFIRE_CRACKLE,
                 SoundCategory.BLOCKS,
                 1f,
                 0.75f
