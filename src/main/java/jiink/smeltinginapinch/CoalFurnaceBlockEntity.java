@@ -10,7 +10,7 @@ import net.minecraft.world.WorldEvents;
 
 public class CoalFurnaceBlockEntity extends DisposableFurnaceBlockEntity {
     public CoalFurnaceBlockEntity(BlockPos pos, BlockState state) {
-        super(pos, state, 48, 8.0F, SmeltingInAPinch.COAL_FURNACE_BLOCK_ENTITY);
+        super(pos, state, 48, 10.0f, SmeltingInAPinch.COAL_FURNACE_BLOCK_ENTITY);
     }
 
     @Override

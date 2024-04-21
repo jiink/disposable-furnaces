@@ -69,7 +69,7 @@ public class SmeltingInAPinch implements ModInitializer {
 	public static final Block DRIED_KELP_FURNACE_BLOCK = Registry.register(
 			Registries.BLOCK,
 			new Identifier(MOD_ID, "dried_kelp_furnace"),
-			new DriedKelpFurnaceBlock(FabricBlockSettings.create().strength(5.0f).sounds(BlockSoundGroup.STONE).burnable().luminance(blockstateToLuminance()))
+			new DriedKelpFurnaceBlock(FabricBlockSettings.create().resistance(2.5f).hardness(0.5f).sounds(BlockSoundGroup.GRASS).burnable().luminance(blockstateToLuminance()))
 	);
 	public static final Item DRIED_KELP_FURANCE_BLOCK_ITEM = Registry.register(
 			Registries.ITEM,
@@ -86,7 +86,7 @@ public class SmeltingInAPinch implements ModInitializer {
 	public static final Block COAL_FURNACE_BLOCK = Registry.register(
 			Registries.BLOCK,
 			new Identifier(MOD_ID, "coal_furnace"),
-			new CoalFurnaceBlock(FabricBlockSettings.create().strength(5.0f).sounds(BlockSoundGroup.STONE).burnable().luminance(blockstateToLuminance()))
+			new CoalFurnaceBlock(FabricBlockSettings.create().strength(5.0f, 6.0f).sounds(BlockSoundGroup.STONE).requiresTool().burnable().luminance(blockstateToLuminance()))
 	);
 	public static final Item COAL_FURANCE_BLOCK_ITEM = Registry.register(
 			Registries.ITEM,
@@ -120,7 +120,7 @@ public class SmeltingInAPinch implements ModInitializer {
 	public static final Block BLAZE_FURNACE_BLOCK = Registry.register(
 			Registries.BLOCK,
 			new Identifier(MOD_ID, "blaze_furnace"),
-			new BlazeFurnaceBlock(FabricBlockSettings.create().strength(5.0f).sounds(BlockSoundGroup.STONE).burnable().luminance(blockstateToLuminance()))
+			new BlazeFurnaceBlock(FabricBlockSettings.create().strength(5.0f).sounds(BlockSoundGroup.GILDED_BLACKSTONE).luminance(blockstateToLuminance()))
 	);
 	public static final Item BLAZE_FURANCE_BLOCK_ITEM = Registry.register(
 			Registries.ITEM,
@@ -154,7 +154,7 @@ public class SmeltingInAPinch implements ModInitializer {
 	public static final Block GUNPOWDER_FURNACE_BLOCK = Registry.register(
 			Registries.BLOCK,
 			new Identifier(MOD_ID, "gunpowder_furnace"),
-			new GunpowderFurnaceBlock(FabricBlockSettings.create().strength(5.0f).sounds(BlockSoundGroup.STONE).burnable().luminance(blockstateToLuminance()))
+			new GunpowderFurnaceBlock(FabricBlockSettings.create().strength(0.5f).sounds(BlockSoundGroup.SAND).luminance(blockstateToLuminance()))
 	);
 	public static final Item GUNPOWDER_FURANCE_BLOCK_ITEM = Registry.register(
 			Registries.ITEM,
@@ -191,21 +191,19 @@ public class SmeltingInAPinch implements ModInitializer {
 			content.addAfter(Items.BLAST_FURNACE, COAL_FURANCE_BLOCK_ITEM);
 			content.addAfter(Items.BLAST_FURNACE, DRIED_KELP_FURANCE_BLOCK_ITEM);
 			content.addAfter(Items.BLAST_FURNACE, WOODEN_FURANCE_BLOCK_ITEM);
-			content.addAfter(Items.TORCH, DEMO_BLOCK_ITEM);
 		});
 
 		FlammableBlockRegistry.getDefaultInstance().add(WOODEN_FURNACE_BLOCK, 5, 5);
 		FlammableBlockRegistry.getDefaultInstance().add(DRIED_KELP_FURNACE_BLOCK, 5, 5);
 		FlammableBlockRegistry.getDefaultInstance().add(COAL_FURNACE_BLOCK, 5, 5);
 		FlammableBlockRegistry.getDefaultInstance().add(CHARCOAL_FURNACE_BLOCK, 5, 5);
-		// TODO: Make lava and blaze furnaces burn other stuff around it like real lava does.
 
 		FuelRegistry.INSTANCE.add(WOODEN_FURANCE_BLOCK_ITEM, 300 * 8);
-		FuelRegistry.INSTANCE.add(DRIED_KELP_FURANCE_BLOCK_ITEM, 1600 * 8); // TODO
+		FuelRegistry.INSTANCE.add(DRIED_KELP_FURANCE_BLOCK_ITEM, 3200);
 		FuelRegistry.INSTANCE.add(COAL_FURANCE_BLOCK_ITEM, 1600 * 8);
 		FuelRegistry.INSTANCE.add(CHARCOAL_FURANCE_BLOCK_ITEM, 1600 * 8);
-		FuelRegistry.INSTANCE.add(LAVA_FURANCE_BLOCK_ITEM, 1600 * 8);
-		FuelRegistry.INSTANCE.add(BLAZE_FURANCE_BLOCK_ITEM, 1600 * 8);
+		FuelRegistry.INSTANCE.add(LAVA_FURANCE_BLOCK_ITEM, 20000 * 8);
+		FuelRegistry.INSTANCE.add(BLAZE_FURANCE_BLOCK_ITEM, 2400 * 2);
 	}
 
 	private static ToIntFunction<BlockState> blockstateToLuminance() {

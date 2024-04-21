@@ -11,7 +11,7 @@ import net.minecraft.world.WorldEvents;
 
 public class DriedKelpFurnaceBlockEntity extends DisposableFurnaceBlockEntity {
     public DriedKelpFurnaceBlockEntity(BlockPos pos, BlockState state) {
-        super(pos, state, 8, 8.0F, SmeltingInAPinch.DRIED_KELP_FURNACE_BLOCK_ENTITY);
+        super(pos, state, 16, 4.0F, SmeltingInAPinch.DRIED_KELP_FURNACE_BLOCK_ENTITY);
     }
 
     @Override

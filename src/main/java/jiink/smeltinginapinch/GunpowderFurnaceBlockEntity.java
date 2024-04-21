@@ -11,24 +11,12 @@ import net.minecraft.world.WorldEvents;
 
 public class GunpowderFurnaceBlockEntity extends DisposableFurnaceBlockEntity {
     public GunpowderFurnaceBlockEntity(BlockPos pos, BlockState state) {
-        super(pos, state, 8, 8.0F, SmeltingInAPinch.GUNPOWDER_FURNACE_BLOCK_ENTITY);
+        super(pos, state, 40, 2.0F, SmeltingInAPinch.GUNPOWDER_FURNACE_BLOCK_ENTITY);
     }
 
     @Override
     protected void burnoutDestroy(World world, BlockPos pos, BlockState state) {
         // explode
-        //world.createExplosion(null, (double)pos.getX(), (double)pos.getY(), (double)pos.getZ(), 4.0f, true, ExplosionSourceType.MOB);
-        // make block breaking particles and sound
-        world.syncWorldEvent(WorldEvents.BLOCK_BROKEN, pos, Block.getRawIdFromState(state));
-        world.playSound(
-                null,
-                pos,
-                SoundEvents.BLOCK_SCAFFOLDING_BREAK,
-                SoundCategory.BLOCKS,
-                1f,
-                0.75f
-        );
-        // destroy block and replace it with fire
-        world.setBlockState(pos, net.minecraft.block.Blocks.FIRE.getDefaultState());
+        world.createExplosion(null, (double)pos.getX(), (double)pos.getY(), (double)pos.getZ(), 4.0f, true, World.ExplosionSourceType.BLOCK);
     }
 }

@@ -17,7 +17,7 @@ import net.minecraft.world.WorldView;
 
 public class LavaFurnaceBlockEntity extends DisposableFurnaceBlockEntity {
     public LavaFurnaceBlockEntity(BlockPos pos, BlockState state) {
-        super(pos, state, 8, 8.0F, SmeltingInAPinch.LAVA_FURNACE_BLOCK_ENTITY);
+        super(pos, state, 400, 20.0F, SmeltingInAPinch.LAVA_FURNACE_BLOCK_ENTITY);
     }
 
     @Override
@@ -34,8 +34,6 @@ public class LavaFurnaceBlockEntity extends DisposableFurnaceBlockEntity {
 
     @Override
     protected void burnoutDestroy(World world, BlockPos pos, BlockState state) {
-        // explode
-        //world.createExplosion(null, (double)pos.getX(), (double)pos.getY(), (double)pos.getZ(), 4.0f, true, ExplosionSourceType.MOB);
         // make block breaking particles and sound
         world.syncWorldEvent(WorldEvents.BLOCK_BROKEN, pos, Block.getRawIdFromState(state));
         world.playSound(
