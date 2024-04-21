@@ -55,7 +55,7 @@ public class BlazeFurnaceBlock extends DisposableFurnaceBlock {
 
             world.addParticle(ParticleTypes.CAMPFIRE_COSY_SMOKE, x + double_6, y + double_7, z + double_8, double_6 * 0.5D, 0.0D, double_8 * 0.5D);
             world.addParticle(ParticleTypes.LAVA, x + double_6, y + double_7, z + double_8, double_6 * 0.5D, 0.0D, double_8 * 0.5D);
-            world.addParticle(ParticleTypes.CAMPFIRE_SIGNAL_SMOKE, x + double_6, y + double_7, z + double_8, 0.0D, 0.0D, 0.0D);
+            world.addParticle(ParticleTypes.CAMPFIRE_SIGNAL_SMOKE, x + double_6, y + double_7, z + double_8, 0.0D, 0.1D, 0.0D);
         }
     }
 

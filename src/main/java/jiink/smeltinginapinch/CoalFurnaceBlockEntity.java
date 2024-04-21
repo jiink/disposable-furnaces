@@ -18,29 +18,27 @@ public class CoalFurnaceBlockEntity extends DisposableFurnaceBlockEntity {
 
     @Override
     protected void burnoutDestroy(World world, BlockPos pos, BlockState state) {
+        // place fire around it
+        for (int i = -1; i < 2; i++) {
+            for (int j = -1; j < 2; j++) {
+                BlockPos pos2 = pos.add(i, 0, j);
+                if (world.canSetBlock(pos2) && world.getBlockState(pos2).isAir()) {
+                    world.setBlockState(pos2, AbstractFireBlock.getState(world, pos2));
+                }
+            }
+        }
         // make block breaking particles and sound
         world.syncWorldEvent(WorldEvents.BLOCK_BROKEN, pos, Block.getRawIdFromState(state));
         world.playSound(
                 null,
                 pos,
-                SoundEvents.ITEM_FIRECHARGE_USE,
+                SoundEvents.ITEM_CROSSBOW_SHOOT,
                 SoundCategory.BLOCKS,
                 1f,
                 0.75f
         );
         // destroy block and replace it with fire
         world.setBlockState(pos, net.minecraft.block.Blocks.FIRE.getDefaultState());
-        // place fire around it
-        for (int i = 0; i < 3; ++i) {
-            for (int j = 0; j < 3; ++j) {
-                BlockPos pos2 = pos.add(i - 1, 0, j - 1);
-                if (!world.canSetBlock(pos2)) {
-                    return;
-                }
-                if (!world.isAir(pos2.up()) || !this.hasBurnableBlock(world, pos2)) continue;
-                world.setBlockState(pos2.up(), AbstractFireBlock.getState(world, pos2));
-            }
-        }
     }
 
     private boolean hasBurnableBlock(WorldView world, BlockPos pos) {
