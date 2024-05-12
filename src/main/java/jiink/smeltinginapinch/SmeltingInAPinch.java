@@ -1,5 +1,6 @@
 package jiink.smeltinginapinch;
 
+import jiink.smeltinginapinch.config.MyConfig;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
@@ -178,11 +179,10 @@ public class SmeltingInAPinch implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
-		// This code runs as soon as Minecraft is in a mod-load-ready state.
-		// However, some things (like resources) may still be uninitialized.
-		// Proceed with mild caution.
+		MyConfig.HANDLER.load();
 
 		LOGGER.info("Getting ready to smelt!");
+        LOGGER.info(">>>> myCoolString: %s{}", MyConfig.HANDLER.instance().myCoolString);
 		ItemGroupEvents.modifyEntriesEvent(ItemGroups.FUNCTIONAL).register(content -> {
 			content.addAfter(Items.BLAST_FURNACE, GUNPOWDER_FURANCE_BLOCK_ITEM);
 			content.addAfter(Items.BLAST_FURNACE, LAVA_FURANCE_BLOCK_ITEM);
