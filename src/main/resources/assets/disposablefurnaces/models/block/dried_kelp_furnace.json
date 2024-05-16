@@ -1,0 +1,8 @@
+{
+    "parent": "block/orientable",
+    "textures": {
+        "top": "disposablefurnaces:block/dried_kelp_furnace_top",
+        "front": "disposablefurnaces:block/dried_kelp_furnace_front",
+        "side": "disposablefurnaces:block/dried_kelp_furnace_side"
+    }
+}

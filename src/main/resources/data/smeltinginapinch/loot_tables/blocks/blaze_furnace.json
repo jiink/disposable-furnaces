@@ -6,7 +6,7 @@
         "entries": [
           {
             "type": "minecraft:item",
-            "name": "smeltinginapinch:blaze_furnace"
+            "name": "disposablefurnaces:blaze_furnace"
           }
         ],
         "conditions": [
@@ -15,7 +15,7 @@
           },
           {
             "condition": "minecraft:block_state_property",
-            "block": "smeltinginapinch:blaze_furnace",
+            "block": "disposablefurnaces:blaze_furnace",
             "properties": {
               "lit": "false"
             }

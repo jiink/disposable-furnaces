@@ -1,9 +1,9 @@
 {
   "replace": false,
   "values": [
-    "smeltinginapinch:coal_furnace",
-    "smeltinginapinch:charcoal_furnace",
-    "smeltinginapinch:lava_furnace",
-    "smeltinginapinch:blaze_furnace"
+    "disposablefurnaces:coal_furnace",
+    "disposablefurnaces:charcoal_furnace",
+    "disposablefurnaces:lava_furnace",
+    "disposablefurnaces:blaze_furnace"
   ]
 }

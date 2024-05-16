@@ -21,7 +21,7 @@ loom {
     splitEnvironmentSourceSets()
 
 	mods {
-		"smeltinginapinch" {
+		"disposablefurnaces" {
 			sourceSet sourceSets.main
 			sourceSet sourceSets.client
 		}

@@ -6,7 +6,7 @@
         "entries": [
           {
             "type": "minecraft:item",
-            "name": "smeltinginapinch:gunpowder_furnace"
+            "name": "disposablefurnaces:gunpowder_furnace"
           }
         ],
         "conditions": [
@@ -15,7 +15,7 @@
           },
           {
             "condition": "minecraft:block_state_property",
-            "block": "smeltinginapinch:gunpowder_furnace",
+            "block": "disposablefurnaces:gunpowder_furnace",
             "properties": {
               "lit": "false"
             }

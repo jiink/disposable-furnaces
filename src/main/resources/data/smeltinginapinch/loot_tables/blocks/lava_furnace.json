@@ -6,7 +6,7 @@
         "entries": [
           {
             "type": "minecraft:item",
-            "name": "smeltinginapinch:lava_furnace"
+            "name": "disposablefurnaces:lava_furnace"
           }
         ],
         "conditions": [
@@ -15,7 +15,7 @@
           },
           {
             "condition": "minecraft:block_state_property",
-            "block": "smeltinginapinch:lava_furnace",
+            "block": "disposablefurnaces:lava_furnace",
             "properties": {
               "lit": "false"
             }

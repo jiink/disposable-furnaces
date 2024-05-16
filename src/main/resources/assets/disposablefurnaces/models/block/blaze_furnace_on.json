@@ -1,0 +1,9 @@
+{
+    "parent": "block/orientable",
+    "textures": {
+        "top": "disposablefurnaces:block/blaze_furnace_top",
+        "front": "disposablefurnaces:block/blaze_furnace_front_on",
+        "side": "disposablefurnaces:block/blaze_furnace_side",
+        "bottom": "disposablefurnaces:block/blaze_furnace_bottom"
+    }
+}

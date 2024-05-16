@@ -1,8 +1,0 @@
-{
-    "parent": "block/orientable",
-    "textures": {
-        "top": "smeltinginapinch:block/coal_furnace_top",
-        "front": "smeltinginapinch:block/coal_furnace_front",
-        "side": "smeltinginapinch:block/coal_furnace_side"
-    }
-}

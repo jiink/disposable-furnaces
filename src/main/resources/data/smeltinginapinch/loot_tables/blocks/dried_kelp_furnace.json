@@ -6,7 +6,7 @@
         "entries": [
           {
             "type": "minecraft:item",
-            "name": "smeltinginapinch:dried_kelp_furnace"
+            "name": "disposablefurnaces:dried_kelp_furnace"
           }
         ],
         "conditions": [
@@ -15,7 +15,7 @@
           },
           {
             "condition": "minecraft:block_state_property",
-            "block": "smeltinginapinch:dried_kelp_furnace",
+            "block": "disposablefurnaces:dried_kelp_furnace",
             "properties": {
               "lit": "false"
             }

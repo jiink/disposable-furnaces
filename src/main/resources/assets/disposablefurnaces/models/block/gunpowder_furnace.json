@@ -1,0 +1,8 @@
+{
+    "parent": "block/orientable",
+    "textures": {
+        "top": "disposablefurnaces:block/gunpowder_furnace_top",
+        "front": "disposablefurnaces:block/gunpowder_furnace_front",
+        "side": "disposablefurnaces:block/gunpowder_furnace_side"
+    }
+}

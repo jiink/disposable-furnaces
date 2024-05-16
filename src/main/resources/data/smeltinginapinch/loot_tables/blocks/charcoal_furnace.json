@@ -6,7 +6,7 @@
         "entries": [
           {
             "type": "minecraft:item",
-            "name": "smeltinginapinch:charcoal_furnace"
+            "name": "disposablefurnaces:charcoal_furnace"
           }
         ],
         "conditions": [
@@ -15,7 +15,7 @@
           },
           {
             "condition": "minecraft:block_state_property",
-            "block": "smeltinginapinch:charcoal_furnace",
+            "block": "disposablefurnaces:charcoal_furnace",
             "properties": {
               "lit": "false"
             }

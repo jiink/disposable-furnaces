@@ -1,31 +1,31 @@
 {
 	"schemaVersion": 1,
-	"id": "smeltinginapinch",
+	"id": "disposablefurnaces",
 	"version": "${version}",
-	"name": "Smelting in a Pinch!",
+	"name": "Disposable Furnaces",
 	"description": "Quickly smelt items with disposable furnaces made of fuel!",
 	"authors": [
 		"jiink"
 	],
 	"contact": {
 		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/jiink/smelting-in-a-pinch"
+		"sources": "https://github.com/jiink/disposable-furnaces"
 	},
 	"license": "CC0-1.0",
-	"icon": "assets/smeltinginapinch/icon.png",
+	"icon": "assets/disposablefurnaces/icon.png",
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"jiink.smeltinginapinch.SmeltingInAPinch"
+          "com.jiink.disposablefurnaces.DisposableFurnaces"
 		],
 		"client": [
-			"jiink.smeltinginapinch.SmeltingInAPinchClient"
+			"com.jiink.disposablefurnaces.DisposableFurnacesClient"
 		]
 	},
 	"mixins": [
-		"smeltinginapinch.mixins.json",
+		"disposablefurnaces.mixins.json",
 		{
-			"config": "smeltinginapinch.client.mixins.json",
+			"config": "disposablefurnaces.client.mixins.json",
 			"environment": "client"
 		}
 	],
