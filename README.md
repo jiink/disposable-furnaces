@@ -20,7 +20,7 @@ This mod adds several quick-smelting furnaces with no fuel slots, but once they 
 
 ![Blaze burnace being used to smelt a lot of sand into glass. It burns a villager who steps on it, the tree next to it, and explodes when exhausted](https://imgur.com/ooRyOec.gif)
 
-This mod contains the following furnaces:
+## Added furnaces
 
 - Wooden Furnace
 - Dried Kelp Furnace
@@ -42,7 +42,31 @@ The crafting recipes should be easy to guess except the following few:
 
 This is my first Minecraft mod; don't hesistate to make an issue if there's something wrong.
 
-Resources I found helpful when making this mod:
+## Configuration
+
+You can edit the config in `disposablefurnaces.json` in the `config` folder of your minecraft directory if you disagree with the balancing or want to remove the explosions from some of the more powerful furnaces.
+
+```c
+{
+  "furnaceGriefing": true,         // Set to false to disable explosive hazards. May harm the gameplay balance by reducing risk.
+  "numItemsCanSmeltWooden": 8,     // How many items can the Wooden Furnace smelt during its lifetime?
+  "smeltDurationSecWooden": 8.0,   // How many seconds is the Wooden Furnace's lifetime?
+  "numItemsCanSmeltDriedKelp": 16, // ...
+  "smeltDurationSecDriedKelp": 4.0,
+  "numItemsCanSmeltCoal": 48,
+  "smeltDurationSecCoal": 10.0,
+  "numItemsCanSmeltCharcoal": 48,
+  "smeltDurationSecCharcoal": 10.0,
+  "numItemsCanSmeltBlaze": 64,
+  "smeltDurationSecBlaze": 9.0,
+  "numItemsCanSmeltLava": 400,
+  "smeltDurationSecLava": 20.0,
+  "numItemsCanSmeltGunpowder": 40,
+  "smeltDurationSecGunpowder": 2.0
+}
+```
+
+## Resources I found helpful when making this mod
 
 - The [Fabric Wiki](https://fabricmc.net/wiki/tutorial:start#creating_your_first_mod)
 - Kaupenjoe's [Block Entity Fabric Modding Tutorial](https://www.youtube.com/watch?v=Y4dK9ETdZCQ)
