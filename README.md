@@ -1,6 +1,18 @@
 # Disposable Furnaces
 
-For smelting in a pinch!
+_For smelting in a pinch!_
+
+This mod adds several quick-smelting furnaces with no fuel slots. But once they are depleted, they burn themselves up and self-destruct.
+
+This mod contains the following furnaces:
+
+- Wooden Furnace
+- Dried Kelp Furnace
+- Charcoal Furnace
+- Coal Furnace
+- Blaze Furnace
+- Lava Furnace (Getting a little silly there)
+- Gunpowder Furnace (I know, gunpowder is not a fue- BOOM!)
 
 This is my first Minecraft mod; don't hesistate to make an issue if there's something wrong.
 
