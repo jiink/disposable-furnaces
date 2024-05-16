@@ -1,5 +1,6 @@
 package jiink.smeltinginapinch;
 
+import jiink.smeltinginapinch.config.MyConfig;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
@@ -16,7 +17,12 @@ public class GunpowderFurnaceBlockEntity extends DisposableFurnaceBlockEntity {
 
     @Override
     protected void burnoutDestroy(World world, BlockPos pos, BlockState state) {
+        world.setBlockState(pos, net.minecraft.block.Blocks.FIRE.getDefaultState());
         // explode
-        world.createExplosion(null, (double)pos.getX(), (double)pos.getY(), (double)pos.getZ(), 4.0f, true, World.ExplosionSourceType.BLOCK);
+        if (MyConfig.HANDLER.instance().furnaceGriefing) {
+            world.createExplosion(null, (double) pos.getX(), (double) pos.getY(), (double) pos.getZ(), 4.0f, false, World.ExplosionSourceType.BLOCK);
+        } else {
+            world.syncWorldEvent(WorldEvents.BLOCK_BROKEN, pos, Block.getRawIdFromState(state));
+        }
     }
 }

@@ -1,5 +1,6 @@
 package jiink.smeltinginapinch;
 
+import jiink.smeltinginapinch.config.MyConfig;
 import net.minecraft.block.AbstractFireBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -29,8 +30,13 @@ public class BlazeFurnaceBlockEntity extends DisposableFurnaceBlockEntity {
                 1f,
                 1f
         );
+        world.setBlockState(pos, net.minecraft.block.Blocks.FIRE.getDefaultState());
         // explode
-        world.createExplosion(null, (double)pos.getX(), (double)pos.getY(), (double)pos.getZ(), 4.0f, true, World.ExplosionSourceType.MOB);
+        if (MyConfig.HANDLER.instance().furnaceGriefing) {
+            world.createExplosion(null, (double) pos.getX(), (double) pos.getY(), (double) pos.getZ(), 1.0f, true, World.ExplosionSourceType.MOB);
+        } else {
+            world.syncWorldEvent(WorldEvents.BLOCK_BROKEN, pos, Block.getRawIdFromState(state));
+        }
     }
 
     @Override

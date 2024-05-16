@@ -18,6 +18,9 @@ public class MyConfig {
                     .build())
             .build();
 
+    @SerialEntry (comment = "Disable explosions from certain powerful furnaces. May cause the mod to become unbalanced.")
+    public boolean furnaceGriefing = true;
+
     @SerialEntry
     public int numItemsCanSmeltWooden = 8;
     @SerialEntry
