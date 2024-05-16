@@ -187,7 +187,7 @@ public class DisposableFurnaces implements ModInitializer {
 		FuelRegistry.INSTANCE.add(DRIED_KELP_FURANCE_BLOCK_ITEM, 3200);
 		FuelRegistry.INSTANCE.add(COAL_FURANCE_BLOCK_ITEM, 1600 * 8);
 		FuelRegistry.INSTANCE.add(CHARCOAL_FURANCE_BLOCK_ITEM, 1600 * 8);
-		FuelRegistry.INSTANCE.add(LAVA_FURANCE_BLOCK_ITEM, 20000 * 8);
+		FuelRegistry.INSTANCE.add(LAVA_FURANCE_BLOCK_ITEM, 20000 * 8); // This gives a warning, "Tried to register an overly high cookTime: 160000 > 32767! (lava_furnace)". Maybe it doesn't work.
 		FuelRegistry.INSTANCE.add(BLAZE_FURANCE_BLOCK_ITEM, 2400 * 2);
 	}
 
