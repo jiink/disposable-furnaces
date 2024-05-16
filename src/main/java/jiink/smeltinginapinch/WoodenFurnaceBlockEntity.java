@@ -11,7 +11,7 @@ import net.minecraft.world.WorldEvents;
 
 public class WoodenFurnaceBlockEntity extends DisposableFurnaceBlockEntity {
     public WoodenFurnaceBlockEntity(BlockPos pos, BlockState state) {
-        super(pos, state, 8, 8.0F, SmeltingInAPinch.WOODEN_FURNACE_BLOCK_ENTITY);
+        super(pos, state, SmeltingInAPinch.WOODEN_FURNACE_BLOCK_ENTITY);
     }
 
     @Override

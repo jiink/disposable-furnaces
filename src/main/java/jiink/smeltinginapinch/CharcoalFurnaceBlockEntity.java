@@ -13,7 +13,7 @@ import net.minecraft.world.WorldView;
 
 public class CharcoalFurnaceBlockEntity extends DisposableFurnaceBlockEntity {
     public CharcoalFurnaceBlockEntity(BlockPos pos, BlockState state) {
-        super(pos, state, 48, 10.0F, SmeltingInAPinch.CHARCOAL_FURNACE_BLOCK_ENTITY);
+        super(pos, state, SmeltingInAPinch.CHARCOAL_FURNACE_BLOCK_ENTITY);
     }
 
     @Override

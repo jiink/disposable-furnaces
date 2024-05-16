@@ -16,7 +16,7 @@ import net.minecraft.world.WorldView;
 
 public class BlazeFurnaceBlockEntity extends DisposableFurnaceBlockEntity {
     public BlazeFurnaceBlockEntity(BlockPos pos, BlockState state) {
-        super(pos, state, 64, 9.0F, SmeltingInAPinch.BLAZE_FURNACE_BLOCK_ENTITY);
+        super(pos, state, SmeltingInAPinch.BLAZE_FURNACE_BLOCK_ENTITY);
     }
 
     @Override

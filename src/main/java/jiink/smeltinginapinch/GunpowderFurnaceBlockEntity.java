@@ -11,7 +11,7 @@ import net.minecraft.world.WorldEvents;
 
 public class GunpowderFurnaceBlockEntity extends DisposableFurnaceBlockEntity {
     public GunpowderFurnaceBlockEntity(BlockPos pos, BlockState state) {
-        super(pos, state, 40, 2.0F, SmeltingInAPinch.GUNPOWDER_FURNACE_BLOCK_ENTITY);
+        super(pos, state, SmeltingInAPinch.GUNPOWDER_FURNACE_BLOCK_ENTITY);
     }
 
     @Override

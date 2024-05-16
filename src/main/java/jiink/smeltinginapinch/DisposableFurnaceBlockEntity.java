@@ -1,8 +1,10 @@
 package jiink.smeltinginapinch;
 
+import jiink.smeltinginapinch.config.MyConfig;
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.entity.player.PlayerEntity;
@@ -48,12 +50,9 @@ public abstract class DisposableFurnaceBlockEntity extends BlockEntity implement
 
     private Random random = Random.create();
 
-    public DisposableFurnaceBlockEntity(BlockPos pos, BlockState state, int numItemsCanSmelt, float howLongCanSmeltSec, BlockEntityType<?> type) {
+    public DisposableFurnaceBlockEntity(BlockPos pos, BlockState state, BlockEntityType<?> type) {
         super(type, pos, state);
-        int howLongCanSmeltTicks = (int)(howLongCanSmeltSec * 20.0F);
-        maxFuel = howLongCanSmeltTicks;
-        fuelRemaining = maxFuel;
-        maxProgress = howLongCanSmeltTicks / numItemsCanSmelt;
+        initSpecsFromConfig();
         this.propertyDelegate = new PropertyDelegate() {
             @Override
             public int get(int index) {
@@ -84,6 +83,38 @@ public abstract class DisposableFurnaceBlockEntity extends BlockEntity implement
             }
             
         };
+    }
+
+    // TODO: There has to be a better way.... :(
+    private void initSpecsFromConfig() {
+        int numItemsCanSmelt = 1;
+        float smeltDurationSec = 1.0F;
+        if (this instanceof WoodenFurnaceBlockEntity) {
+            numItemsCanSmelt = MyConfig.HANDLER.instance().numItemsCanSmeltWooden;
+            smeltDurationSec = MyConfig.HANDLER.instance().smeltDurationSecWooden;
+        }  else if (this instanceof DriedKelpFurnaceBlockEntity) {
+            numItemsCanSmelt = MyConfig.HANDLER.instance().numItemsCanSmeltDriedKelp;
+            smeltDurationSec = MyConfig.HANDLER.instance().smeltDurationSecDriedKelp;
+        } else if (this instanceof CoalFurnaceBlockEntity) {
+            numItemsCanSmelt = MyConfig.HANDLER.instance().numItemsCanSmeltCoal;
+            smeltDurationSec = MyConfig.HANDLER.instance().smeltDurationSecCoal;
+        }  else if (this instanceof CharcoalFurnaceBlockEntity) {
+            numItemsCanSmelt = MyConfig.HANDLER.instance().numItemsCanSmeltCharcoal;
+            smeltDurationSec = MyConfig.HANDLER.instance().smeltDurationSecCharcoal;
+        }  else if (this instanceof BlazeFurnaceBlockEntity) {
+            numItemsCanSmelt = MyConfig.HANDLER.instance().numItemsCanSmeltBlaze;
+            smeltDurationSec = MyConfig.HANDLER.instance().smeltDurationSecBlaze;
+        }  else if (this instanceof LavaFurnaceBlockEntity) {
+            numItemsCanSmelt = MyConfig.HANDLER.instance().numItemsCanSmeltLava;
+            smeltDurationSec = MyConfig.HANDLER.instance().smeltDurationSecLava;
+        }  else if (this instanceof GunpowderFurnaceBlockEntity) {
+            numItemsCanSmelt = MyConfig.HANDLER.instance().numItemsCanSmeltGunpowder;
+            smeltDurationSec = MyConfig.HANDLER.instance().smeltDurationSecGunpowder;
+        }
+        int smeltDurationTicks = (int)(smeltDurationSec * 20.0F);
+        maxFuel = smeltDurationTicks;
+        fuelRemaining = maxFuel;
+        maxProgress = smeltDurationTicks / numItemsCanSmelt;
     }
 
     @Override
@@ -166,7 +197,7 @@ public abstract class DisposableFurnaceBlockEntity extends BlockEntity implement
 
     protected void burnoutDestroy(World world, BlockPos pos, BlockState state) {
         world.syncWorldEvent(WorldEvents.BLOCK_BROKEN, pos, Block.getRawIdFromState(state));
-        world.setBlockState(pos, net.minecraft.block.Blocks.AIR.getDefaultState());
+        world.setBlockState(pos, Blocks.AIR.getDefaultState());
     }
 
     private void resetProgress() {

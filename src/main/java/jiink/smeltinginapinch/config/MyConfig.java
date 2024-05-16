@@ -12,19 +12,44 @@ public class MyConfig {
     public static ConfigClassHandler<MyConfig> HANDLER = ConfigClassHandler.createBuilder(MyConfig.class)
             //.id(new ResourceLocation(MOD_ID, "my_config"))
             .serializer(config -> GsonConfigSerializerBuilder.create(config)
-                    .setPath(FabricLoader.getInstance().getConfigDir().resolve("smeltinginapinch.json"))
+                    .setPath(FabricLoader.getInstance().getConfigDir().resolve(MOD_ID + ".json"))
 //                    .appendGsonBuilder(GsonBuilder::setPrettyPrint) // not needed, pretty print by default
 //                    .setJson5(true)
                     .build())
             .build();
 
     @SerialEntry
-    public boolean myCoolBoolean = true;
+    public int numItemsCanSmeltWooden = 8;
+    @SerialEntry
+    public float smeltDurationSecWooden = 8.0F;
 
     @SerialEntry
-    public int myCoolInteger = 5;
+    public int numItemsCanSmeltDriedKelp = 16;
+    @SerialEntry
+    public float smeltDurationSecDriedKelp = 4.0F;
 
-    @SerialEntry(comment = "This string is amazing")
-    public String myCoolString = "How amazing!";
+    @SerialEntry
+    public int numItemsCanSmeltCoal = 48;
+    @SerialEntry
+    public float smeltDurationSecCoal = 10.0F;
+    @SerialEntry
 
+    public int numItemsCanSmeltCharcoal = 48;
+    @SerialEntry
+    public float smeltDurationSecCharcoal = 10.0F;
+    @SerialEntry
+
+    public int numItemsCanSmeltBlaze = 64;
+    @SerialEntry
+    public float smeltDurationSecBlaze = 9.0F;
+    @SerialEntry
+
+    public int numItemsCanSmeltLava = 400;
+    @SerialEntry
+    public float smeltDurationSecLava = 20.0F;
+    @SerialEntry
+
+    public int numItemsCanSmeltGunpowder = 40;
+    @SerialEntry
+    public float smeltDurationSecGunpowder = 2.0F;
 }

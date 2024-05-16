@@ -17,7 +17,7 @@ import net.minecraft.world.WorldView;
 
 public class LavaFurnaceBlockEntity extends DisposableFurnaceBlockEntity {
     public LavaFurnaceBlockEntity(BlockPos pos, BlockState state) {
-        super(pos, state, 400, 20.0F, SmeltingInAPinch.LAVA_FURNACE_BLOCK_ENTITY);
+        super(pos, state, SmeltingInAPinch.LAVA_FURNACE_BLOCK_ENTITY);
     }
 
     @Override
