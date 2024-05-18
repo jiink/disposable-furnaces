@@ -39,7 +39,7 @@ dependencies {
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
 	// To make making a config easier
-	modImplementation 'dev.isxander:yet-another-config-lib:3.4.2+1.20.4-fabric'
+	modImplementation 'dev.isxander:yet-another-config-lib:3.4.2+1.20.5-fabric'
 }
 
 processResources {
