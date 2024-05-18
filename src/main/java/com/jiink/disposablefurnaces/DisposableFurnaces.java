@@ -158,7 +158,7 @@ public class DisposableFurnaces implements ModInitializer {
 		DISPOSABLE_FURNACE_SCREEN_HANDLER = Registry.register(
 				Registries.SCREEN_HANDLER,
 				new Identifier(MOD_ID, "disposable_furnace_screen_handler"),
-				new ExtendedScreenHandlerType<>(DisposableFurnaceScreenHandler::new)
+				new ExtendedScreenHandlerType<>(DisposableFurnaceScreenHandler::new, DisposableFurnacePayload.CODEC)
 		);
 	}
 

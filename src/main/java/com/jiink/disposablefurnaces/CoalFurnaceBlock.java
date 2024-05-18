@@ -52,7 +52,7 @@ public class CoalFurnaceBlock extends DisposableFurnaceBlock {
             double double_7 = random.nextDouble() * 6.0D / 16.0D;
             double double_8 = direction$Axis_1 == Direction.Axis.Z ? (double) direction_1.getOffsetZ() * 0.52D : double_5;
 
-            world.addParticle(ParticleTypes.GUST_DUST, x + double_6, y + double_7, z + double_8, double_6 * 0.1D, 0.0D, double_8 * 0.1D);
+            world.addParticle(ParticleTypes.GUST, x + double_6, y + double_7, z + double_8, double_6 * 0.1D, 0.0D, double_8 * 0.1D);
             world.addParticle(ParticleTypes.LAVA, x + double_6, y + double_7, z + double_8, double_6 * 0.5D, 0.0D, double_8 * 0.5D);
             world.addParticle(ParticleTypes.LARGE_SMOKE, x + double_6, y + double_7, z + double_8, double_6 * 0.1D, 0.0D, double_8 * 0.1D);
         }

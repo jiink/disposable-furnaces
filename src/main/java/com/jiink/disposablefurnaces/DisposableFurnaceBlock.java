@@ -86,11 +86,11 @@ public abstract class DisposableFurnaceBlock extends BlockWithEntity {
     }
 
     @Override
-    public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
+    public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, BlockHitResult hit) {
         if (world.isClient) {
             return ActionResult.SUCCESS;
         }
-        if (hand == Hand.MAIN_HAND) {
+        if (player.getActiveHand() == Hand.MAIN_HAND) {
             NamedScreenHandlerFactory screenHandlerFactory = (DisposableFurnaceBlockEntity)world.getBlockEntity(pos);
             if (screenHandlerFactory != null) {
                 player.openHandledScreen(screenHandlerFactory);
