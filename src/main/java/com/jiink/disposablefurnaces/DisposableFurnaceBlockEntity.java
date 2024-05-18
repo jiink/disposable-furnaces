@@ -139,7 +139,7 @@ public abstract class DisposableFurnaceBlockEntity extends BlockEntity implement
 //    }
     @Override
     public Object getScreenOpeningData(ServerPlayerEntity player) {
-        return null;
+        return new DisposableFurnacePayload(this.pos);
     }
     
     @Override

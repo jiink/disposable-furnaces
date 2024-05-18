@@ -23,9 +23,8 @@ public class DisposableFurnaceScreenHandler extends ScreenHandler {
     protected final World world;
     private final RecipeType<SmeltingRecipe> recipeType = RecipeType.SMELTING;
 
-    public DisposableFurnaceScreenHandler(int syncId, PlayerInventory inventory, PacketByteBuf buf) {
-        this(syncId, inventory, inventory.player.getWorld().getBlockEntity(buf.readBlockPos()),
-        new ArrayPropertyDelegate(5));
+    public DisposableFurnaceScreenHandler(int syncId, PlayerInventory inventory, DisposableFurnacePayload payload) {
+        this(syncId, inventory, inventory.player.getWorld().getBlockEntity(payload.blockPos()), new ArrayPropertyDelegate(5));
     }
 
     public DisposableFurnaceScreenHandler(int syncId, PlayerInventory playerInventory, BlockEntity blockEntity,
