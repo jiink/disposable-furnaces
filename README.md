@@ -1,4 +1,12 @@
 <img src="https://github.com/jiink/disposable-furnaces/assets/35513545/06cbeb0e-c397-49b2-a1fc-86359bfc2d0e" alt="Disposable Furnaces" width="50%">
+<br>
+<a href="https://www.curseforge.com/minecraft/mc-mods/disposable-furnaces">
+    <img src="https://img.shields.io/badge/-CurseForge-gray?style=for-the-badge&logo=curseforge&labelColor=orange">
+</a>
+<a href="https://modrinth.com/mod/disposable-furnaces">
+    <img src="https://img.shields.io/badge/-modrinth-gray?style=for-the-badge&labelColor=green&labelWidth=15&logo=appveyor&logoColor=white">
+</a>
+<br>
 
 [![Mod loader: Fabric]][fabric]
 
