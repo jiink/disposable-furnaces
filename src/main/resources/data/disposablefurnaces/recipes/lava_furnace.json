@@ -11,7 +11,7 @@
     }
   },
   "result": {
-    "item": "disposablefurnaces:lava_furnace",
+    "id": "disposablefurnaces:lava_furnace",
     "count": 1
   }
 }

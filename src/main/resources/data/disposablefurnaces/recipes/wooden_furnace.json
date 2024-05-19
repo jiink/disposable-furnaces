@@ -11,7 +11,7 @@
     }
   },
   "result": {
-    "item": "disposablefurnaces:wooden_furnace",
+    "id": "disposablefurnaces:wooden_furnace",
     "count": 1
   }
 }

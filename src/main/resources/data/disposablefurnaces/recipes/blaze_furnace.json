@@ -11,7 +11,7 @@
     }
   },
   "result": {
-    "item": "disposablefurnaces:blaze_furnace",
+    "id": "disposablefurnaces:blaze_furnace",
     "count": 1
   }
 }

@@ -11,7 +11,7 @@
     }
   },
   "result": {
-    "item": "disposablefurnaces:coal_furnace",
+    "id": "disposablefurnaces:coal_furnace",
     "count": 1
   }
 }
